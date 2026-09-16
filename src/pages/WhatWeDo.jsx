@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSearchParams, Link } from 'react-router-dom';
-import { CheckCircle2, TrendingUp, ArrowUpRight, Play } from 'lucide-react';
+import { CheckCircle2, TrendingUp, ArrowUpRight } from 'lucide-react';
 import { servicesData } from '../data/services';
 import ProcessSteps from '../components/ProcessSteps';
-import VideoLightbox from '../components/VideoLightbox';
 
 const tabOptions = [
   { id: '01', label: '01 Gov Relations' },
@@ -19,11 +18,6 @@ export default function WhatWeDo() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialTab = searchParams.get('tab') || '01';
   const [activeTab, setActiveTab] = useState(initialTab);
-  const [videoModal, setVideoModal] = useState({
-    isOpen: false,
-    videoUrl: '',
-    title: '',
-  });
 
   useEffect(() => {
     const tabFromUrl = searchParams.get('tab');
@@ -41,13 +35,6 @@ export default function WhatWeDo() {
 
   return (
     <div className="w-full">
-      {/* Video Lightbox Player */}
-      <VideoLightbox
-        isOpen={videoModal.isOpen}
-        onClose={() => setVideoModal({ isOpen: false, videoUrl: '', title: '' })}
-        videoUrl={videoModal.videoUrl}
-        title={videoModal.title}
-      />
 
       {/* ======================================================== */}
       {/* Section A: Page Hero (Compact & Editorial)               */}
@@ -124,43 +111,13 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
                 >
-                  <div className="lg:col-span-6 flex flex-col gap-3">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
-                      <img
-                        src={currentService.image}
-                        alt={currentService.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
-                        loading="lazy"
-                      />
-                    </div>
-                    {/* Embedded Video Preview Card */}
-                    <div
-                      onClick={() =>
-                        setVideoModal({
-                          isOpen: true,
-                          videoUrl: currentService.videoUrl,
-                          title: currentService.videoTitle,
-                        })
-                      }
-                      className="group p-3 rounded-xl bg-[#132E2B] text-white flex items-center justify-between border border-[#2D5A54] hover:border-[#4ECDC4] shadow-sm hover:shadow-[0_0_15px_rgba(78,205,196,0.2)] transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-8 h-8 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] flex items-center justify-center text-[#0A1E1B] transition-transform duration-300 group-hover:scale-110">
-                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-bold text-white group-hover:text-[#4ECDC4] transition-colors">
-                            ▶ Watch How We Do It
-                          </span>
-                          <span className="text-[10px] text-white/60">
-                            Institutional Communications Workflow Reel
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-[#4ECDC4] bg-white/10 px-2 py-1 rounded">
-                        4K Asset
-                      </span>
-                    </div>
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                    <img
+                      src={currentService.image}
+                      alt={currentService.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
+                      loading="lazy"
+                    />
                   </div>
 
                   <div className="lg:col-span-6 flex flex-col gap-3.5">
@@ -223,43 +180,13 @@ export default function WhatWeDo() {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-6 flex flex-col gap-3 order-1 lg:order-2">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
-                      <img
-                        src={currentService.image}
-                        alt={currentService.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
-                        loading="lazy"
-                      />
-                    </div>
-                    {/* Embedded Video Preview Card */}
-                    <div
-                      onClick={() =>
-                        setVideoModal({
-                          isOpen: true,
-                          videoUrl: currentService.videoUrl,
-                          title: currentService.videoTitle,
-                        })
-                      }
-                      className="group p-3 rounded-xl bg-[#132E2B] text-white flex items-center justify-between border border-[#2D5A54] hover:border-[#4ECDC4] shadow-sm hover:shadow-[0_0_15px_rgba(78,205,196,0.2)] transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-8 h-8 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] flex items-center justify-center text-[#0A1E1B] transition-transform duration-300 group-hover:scale-110">
-                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-bold text-white group-hover:text-[#4ECDC4] transition-colors">
-                            ▶ Watch How We Do It
-                          </span>
-                          <span className="text-[10px] text-white/60">
-                            Broadcast Studio &amp; Filming Showcase
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-[#4ECDC4] bg-white/10 px-2 py-1 rounded">
-                        4K Asset
-                      </span>
-                    </div>
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8] order-1 lg:order-2">
+                    <img
+                      src={currentService.image}
+                      alt={currentService.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
+                      loading="lazy"
+                    />
                   </div>
                 </motion.div>
               )}
@@ -274,47 +201,16 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col gap-6"
                 >
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                    <div className="lg:col-span-7">
-                      <h3
-                        className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
-                        style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
-                      >
-                        {currentService.headline}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold mt-0.5">
-                        {currentService.tagline}
-                      </p>
-                    </div>
-                    <div className="lg:col-span-5">
-                      <div
-                        onClick={() =>
-                          setVideoModal({
-                            isOpen: true,
-                            videoUrl: currentService.videoUrl,
-                            title: currentService.videoTitle,
-                          })
-                        }
-                        className="group p-3 rounded-xl bg-[#132E2B] text-white flex items-center justify-between border border-[#2D5A54] hover:border-[#4ECDC4] shadow-sm hover:shadow-[0_0_15px_rgba(78,205,196,0.2)] transition-all cursor-pointer"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <span className="w-8 h-8 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] flex items-center justify-center text-[#0A1E1B] transition-transform duration-300 group-hover:scale-110">
-                            <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                          </span>
-                          <div className="flex flex-col">
-                            <span className="text-xs font-bold text-white group-hover:text-[#4ECDC4] transition-colors">
-                              ▶ Watch How We Do It
-                            </span>
-                            <span className="text-[10px] text-white/60">
-                              Event Production &amp; Protocol Reel
-                            </span>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-[#4ECDC4] bg-white/10 px-2 py-1 rounded">
-                          4K Asset
-                        </span>
-                      </div>
-                    </div>
+                  <div>
+                    <h3
+                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
+                    >
+                      {currentService.headline}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold mt-0.5">
+                      {currentService.tagline}
+                    </p>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
@@ -343,43 +239,13 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
                 >
-                  <div className="lg:col-span-6 flex flex-col gap-3">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
-                      <img
-                        src={currentService.image}
-                        alt={currentService.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
-                        loading="lazy"
-                      />
-                    </div>
-                    {/* Embedded Video Preview Card */}
-                    <div
-                      onClick={() =>
-                        setVideoModal({
-                          isOpen: true,
-                          videoUrl: currentService.videoUrl,
-                          title: currentService.videoTitle,
-                        })
-                      }
-                      className="group p-3 rounded-xl bg-[#132E2B] text-white flex items-center justify-between border border-[#2D5A54] hover:border-[#4ECDC4] shadow-sm hover:shadow-[0_0_15px_rgba(78,205,196,0.2)] transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-8 h-8 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] flex items-center justify-center text-[#0A1E1B] transition-transform duration-300 group-hover:scale-110">
-                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-bold text-white group-hover:text-[#4ECDC4] transition-colors">
-                            ▶ Watch How We Do It
-                          </span>
-                          <span className="text-[10px] text-white/60">
-                            CSR Beneficiary Documentary Story
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-[#4ECDC4] bg-white/10 px-2 py-1 rounded">
-                        4K Asset
-                      </span>
-                    </div>
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                    <img
+                      src={currentService.image}
+                      alt={currentService.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
+                      loading="lazy"
+                    />
                   </div>
 
                   <div className="lg:col-span-6 flex flex-col gap-3.5">
@@ -418,47 +284,15 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
                 >
-                  {/* Chart Left with Video Card */}
-                  <div className="lg:col-span-6 flex flex-col gap-3">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
-                      <img
-                        src={currentService.image}
-                        alt={currentService.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
-                        loading="lazy"
-                      />
-                    </div>
-                    {/* Embedded Video Preview Card */}
-                    <div
-                      onClick={() =>
-                        setVideoModal({
-                          isOpen: true,
-                          videoUrl: currentService.videoUrl,
-                          title: currentService.videoTitle,
-                        })
-                      }
-                      className="group p-3 rounded-xl bg-[#132E2B] text-white flex items-center justify-between border border-[#2D5A54] hover:border-[#4ECDC4] shadow-sm hover:shadow-[0_0_15px_rgba(78,205,196,0.2)] transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-8 h-8 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] flex items-center justify-center text-[#0A1E1B] transition-transform duration-300 group-hover:scale-110">
-                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-bold text-white group-hover:text-[#4ECDC4] transition-colors">
-                            ▶ Watch How We Do It
-                          </span>
-                          <span className="text-[10px] text-white/60">
-                            Digital Growth Strategy &amp; Campaign Analytics
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-[#4ECDC4] bg-white/10 px-2 py-1 rounded">
-                        4K Asset
-                      </span>
-                    </div>
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                    <img
+                      src={currentService.image}
+                      alt={currentService.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
+                      loading="lazy"
+                    />
                   </div>
 
-                  {/* Content Right */}
                   <div className="lg:col-span-6 flex flex-col gap-3.5">
                     <h3
                       className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
@@ -515,43 +349,13 @@ export default function WhatWeDo() {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-6 flex flex-col gap-3 order-1 lg:order-2">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
-                      <img
-                        src={currentService.image}
-                        alt={currentService.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
-                        loading="lazy"
-                      />
-                    </div>
-                    {/* Embedded Video Preview Card */}
-                    <div
-                      onClick={() =>
-                        setVideoModal({
-                          isOpen: true,
-                          videoUrl: currentService.videoUrl,
-                          title: currentService.videoTitle,
-                        })
-                      }
-                      className="group p-3 rounded-xl bg-[#132E2B] text-white flex items-center justify-between border border-[#2D5A54] hover:border-[#4ECDC4] shadow-sm hover:shadow-[0_0_15px_rgba(78,205,196,0.2)] transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-8 h-8 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] flex items-center justify-center text-[#0A1E1B] transition-transform duration-300 group-hover:scale-110">
-                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-xs font-bold text-white group-hover:text-[#4ECDC4] transition-colors">
-                            ▶ Watch How We Do It
-                          </span>
-                          <span className="text-[10px] text-white/60">
-                            Sumant Cloud Tech &amp; Platform Architecture
-                          </span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-mono font-bold text-[#4ECDC4] bg-white/10 px-2 py-1 rounded">
-                        4K Asset
-                      </span>
-                    </div>
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8] order-1 lg:order-2">
+                    <img
+                      src={currentService.image}
+                      alt={currentService.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
+                      loading="lazy"
+                    />
                   </div>
                 </motion.div>
               )}
