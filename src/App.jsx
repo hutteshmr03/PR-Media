@@ -92,9 +92,12 @@ export default function App() {
   const [splashDone, setSplashDone] = useState(() => {
     if (typeof window === 'undefined') return true;
     try {
+      if (window.location.pathname !== '/' && window.location.pathname !== '') {
+        return true;
+      }
       return sessionStorage.getItem('splashShown') === 'true';
     } catch (e) {
-      return false;
+      return true;
     }
   });
 

@@ -666,30 +666,29 @@ export default function Home() {
 
           <div className="flex flex-col gap-2 my-4">
             {[
-              { label: 'Corporates & Pharma', tab: 'why-us' },
-              { label: 'NGOs & Startups', tab: 'why-us' },
-              { label: 'Education & Government', tab: 'why-us' },
+              { label: 'CORPORATES & PHARMA', tab: 'why-us' },
+              { label: 'NGOS & STARTUPS', tab: 'why-us' },
+              { label: 'EDUCATION & GOVERNMENT', tab: 'why-us' },
             ].map((item, iIdx) => (
               <React.Fragment key={iIdx}>
                 <motion.div
-                  whileHover={{ scale: 1.04 }}
+                  whileHover={{ scale: 1.03 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                 >
                   <Link
                     to="/why-us"
-                    className="group inline-flex items-center justify-center gap-3 py-2 text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-white/90 hover:text-[#4ECDC4] transition-colors duration-300 drop-shadow-md"
-                    style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
+                    className="group inline-flex items-center justify-center gap-3 py-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-wide text-white/95 hover:text-[#4ECDC4] transition-all duration-300 drop-shadow-md font-sans"
                   >
                     <span className="group-hover:tracking-wider transition-all duration-300">{item.label}</span>
                     <ArrowUpRight className="w-5 h-5 text-[#4ECDC4] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                   </Link>
                 </motion.div>
-                {iIdx < 2 && <div className="w-12 h-[1px] bg-white/20 mx-auto my-1" />}
+                {iIdx < 2 && <div className="w-16 h-[1px] bg-white/20 mx-auto my-1.5" />}
               </React.Fragment>
             ))}
           </div>
 
-          <p className="text-[11px] sm:text-xs text-white/70 tracking-wider uppercase mt-4 font-medium drop-shadow-sm">
+          <p className="text-[11px] sm:text-xs text-white/75 tracking-[0.2em] uppercase mt-4 font-semibold drop-shadow-sm">
             Across Goa and beyond
           </p>
         </div>

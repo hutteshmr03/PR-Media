@@ -1,24 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Radio, Network, Cog, ArrowUpRight, RadioTower, Users, MapPin } from 'lucide-react';
+import { Radio, Network, Cog, ArrowRight, ArrowUpRight, CheckCircle2, RadioTower, Users, MapPin } from 'lucide-react';
 import ImageGallery from '../components/ImageGallery';
 
 const pillars = [
   {
+    num: '01',
+    badge: 'PILLAR 01',
     icon: Radio,
     heading: 'STRATEGIC PR & COMMUNICATIONS',
     text: 'Rooted in Goa, Global Aadhar delivers end-to-end public relations and strategic communications for corporates, NGOs, government bodies, and institutions seeking credible, impactful outreach.',
+    points: [
+      'Regional TV & Daily Press Bureaus',
+      'Statewide Media Outreach & Syndication',
+      'Credible Public Relations Campaigns',
+    ],
+    link: '/what-we-do?tab=02',
   },
   {
+    num: '02',
+    badge: 'PILLAR 02',
     icon: Network,
     heading: 'MEDIA & INSTITUTIONAL NETWORK',
     text: 'We operate within a rich ecosystem of media partners, NGOs, and government departments, enabling meaningful engagement with stakeholders and communities that matter most.',
+    points: [
+      'Regional TV & Daily Press Bureaus',
+      'State Department Coordination',
+      'Community & Stakeholder Trust',
+    ],
+    link: '/what-we-do?tab=01',
   },
   {
+    num: '03',
+    badge: 'PILLAR 03',
     icon: Cog,
     heading: 'INTEGRATED EXECUTION',
     text: 'From strategy to storytelling to on-ground activation — communications, media production, events, digital marketing, and technology under one integrated delivery model.',
+    points: [
+      'End-to-End Strategy & Production',
+      'On-Ground Activations & Events',
+      'Sumant Cloud Technology Platform',
+    ],
+    link: '/what-we-do',
   },
 ];
 
@@ -76,11 +100,11 @@ export default function WhoWeAre() {
       </section>
 
       {/* ======================================================== */}
-      {/* Section B: 3 Pillar Cards (Beige)                        */}
+      {/* Section B: 3 Pillar Cards (Smooth Hover Animation)       */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#E5E3DE]">
+      <section className="py-12 sm:py-16 bg-[#E5E3DE]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
             {pillars.map((pillar, idx) => {
               const IconComp = pillar.icon;
               return (
@@ -90,22 +114,57 @@ export default function WhoWeAre() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white rounded-xl p-5 sm:p-6 border border-[#D5D1C8]/70 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                  whileHover={{ y: -6, scale: 1.015 }}
+                  className="group relative rounded-3xl p-6 sm:p-7 bg-[#DDD9D0] hover:bg-[#3D6E65] border border-[#CCC8BD] hover:border-[#3D6E65] shadow-sm hover:shadow-2xl transition-all duration-300 ease-out flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-lg bg-[#2D5A54] flex items-center justify-center text-white mb-4 shadow-sm">
-                      <IconComp className="w-5 h-5 text-[#4ECDC4]" />
+                    {/* Top Row: Icon Squircle + Pillar Pill */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-[#CCC8BD] group-hover:bg-white text-[#23413C] group-hover:text-[#2D5A54] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <span className="px-3.5 py-1.5 rounded-full bg-[#CCC8BD] group-hover:bg-white text-[#23413C] group-hover:text-[#2D5A54] text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all duration-300 shadow-sm">
+                        {pillar.badge}
+                      </span>
                     </div>
+
+                    {/* Headline */}
                     <h3
-                      className="text-base sm:text-lg font-black text-[#23413C] uppercase tracking-tight mb-2"
+                      className="text-lg sm:text-xl font-black text-[#23413C] group-hover:text-white uppercase tracking-tight mb-3 transition-colors duration-300"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {pillar.heading}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2B2B2B] leading-relaxed">
+
+                    {/* Description */}
+                    <p className="text-xs sm:text-sm text-[#2B2B2B]/85 group-hover:text-white/95 leading-relaxed transition-colors duration-300 mb-6">
                       {pillar.text}
                     </p>
+
+                    {/* Divider */}
+                    <div className="w-full h-[1px] bg-[#CCC8BD] group-hover:bg-white/20 my-5 transition-colors duration-300" />
+
+                    {/* 3 Checklist points */}
+                    <div className="flex flex-col gap-2.5 mb-6">
+                      {pillar.points.map((point) => (
+                        <div key={point} className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-[#2D5A54] group-hover:text-[#4ECDC4] flex-shrink-0 transition-colors duration-300" />
+                          <span className="text-xs font-bold text-[#23413C] group-hover:text-white transition-colors duration-300">
+                            {point}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+
+                  {/* Bottom Explore Button */}
+                  <Link
+                    to={pillar.link}
+                    className="w-full py-3 px-5 rounded-full bg-[#CCC8BD]/80 group-hover:bg-white text-[#23413C] group-hover:text-[#2D5A54] font-bold text-xs uppercase tracking-wider flex items-center justify-between transition-all duration-300 shadow-sm group-hover:shadow-lg mt-2"
+                  >
+                    <span>EXPLORE PILLAR</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </Link>
                 </motion.div>
               );
             })}
