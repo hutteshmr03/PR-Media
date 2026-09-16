@@ -1,114 +1,90 @@
-﻿import React from 'react';
-import { ArrowUp } from 'lucide-react';
-import { brandMeta } from '../data/brandContent';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ChevronUp } from 'lucide-react';
 
-export default function Footer({ currentPage = 'home', onNavigatePage, onNavigateContact, onNavigateHome }) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleLinkClick = (e, pageId) => {
-    e.preventDefault();
-    if (onNavigatePage) {
-      onNavigatePage(pageId);
-    } else if (pageId === 'contact' && onNavigateContact) {
-      onNavigateContact();
-    } else {
-      window.location.hash = `#/${pageId}`;
-    }
-  };
-
-  const handleBrandClick = (e) => {
-    e.preventDefault();
-    if (onNavigateHome) onNavigateHome();
-    else if (onNavigatePage) onNavigatePage('home');
-    else window.location.hash = '';
-  };
-
-  const footerLinks = [
-    { id: 'engagement-model', label: 'Engagement Model' },
-    { id: 'commercial-models', label: 'Commercial Models' },
-    { id: 'services', label: 'Core Services' },
-    { id: 'who-we-are', label: 'Who We Are' },
-    { id: 'who-we-serve', label: 'Who We Serve' },
-    { id: 'why-us', label: 'Why Us' },
-    { id: 'contact', label: 'Contact' }
+export default function Footer() {
+  const primaryLinks = [
+    { label: 'HOME', path: '/' },
+    { label: 'WHO WE ARE', path: '/who-we-are' },
+    { label: 'WHAT WE DO', path: '/what-we-do' },
+    { label: 'OUR WORK', path: '/our-work' },
+    { label: 'WHY US', path: '/why-us' },
+    { label: 'CONTACT', path: '/contact' },
   ];
 
-  return (
-    <footer className="bg-[#EDEBE7] text-[#2B2B2B] pt-12 pb-8 border-t border-[#D5D1C8] font-deck-body">
-      <div className="deck-container space-y-8">
-        {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-[#D5D1C8]">
-          {/* Brand Col */}
-          <div className="md:col-span-6 space-y-3">
-            <a href="#" onClick={handleBrandClick} className="flex flex-col group cursor-pointer text-decoration-none">
-              <div className="font-deck-headline text-xl sm:text-2xl text-[#2D5A54] tracking-tight leading-none group-hover:opacity-90 transition-opacity">
-                GLOBAL AADHAR
-              </div>
-              <div className="text-[10px] font-bold text-[#2D5A54] tracking-[0.16em] uppercase mt-0.5">
-                STRATEGIC COMMUNICATIONS
-              </div>
-            </a>
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
-            <p className="text-xs text-[#2B2B2B] max-w-md leading-relaxed pt-1">
-              A Goa-based Public Relations and Strategic Communications company delivering integrated media, stakeholder engagement, and communications solutions that connect opportunities and drive measurable impact.
+  return (
+    <footer className="w-full bg-[#081F1D] text-white border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-12">
+        {/* ======================================================== */}
+        {/* MAIN ROW: Brand Identity & Quick Navigation              */}
+        {/* ======================================================== */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-8 border-b border-white/10">
+          {/* Left Column: Brand Logo & Strategic PR Subtitles */}
+          <div className="flex flex-col gap-2">
+            <Link to="/" className="inline-flex flex-col text-left group">
+              <span
+                className="text-lg sm:text-xl font-black tracking-widest uppercase text-white"
+                style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
+              >
+                GLOBAL AADHAR
+              </span>
+              <span className="text-[9px] tracking-[0.22em] uppercase font-bold text-[#4ECDC4]">
+                STRATEGIC COMMUNICATIONS &amp; PR · GOA
+              </span>
+            </Link>
+            <p className="text-xs text-white/60 tracking-wider uppercase font-medium mt-1">
+              Building Trust. Creating Impact.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-3 space-y-2.5 text-xs">
-            <div className="font-deck-headline text-xs tracking-wider text-[#2D5A54] uppercase mb-1.5">
-              Navigation
+          {/* Right Column: Quick Navigation */}
+          <div className="flex flex-col gap-3 lg:items-end">
+            <div className="mb-1">
+              <span
+                className="text-xs sm:text-sm font-black uppercase tracking-wider text-white border-b-2 border-[#4ECDC4] pb-1 inline-block"
+                style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
+              >
+                QUICK NAVIGATION
+              </span>
             </div>
-            <ul className="space-y-2 text-[#2B2B2B]">
-              {footerLinks.map((link) => {
-                const isActive = currentPage === link.id;
-                return (
-                  <li key={link.id}>
-                    <a 
-                      href={`#/${link.id}`} 
-                      onClick={(e) => handleLinkClick(e, link.id)} 
-                      className={`transition-colors cursor-pointer ${
-                        isActive 
-                          ? 'text-[#2D5A54] font-bold underline decoration-2 underline-offset-4' 
-                          : 'hover:text-[#2D5A54]'
-                      }`}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
 
-          {/* Office Bureau */}
-          <div className="md:col-span-3 space-y-2.5 text-xs">
-            <div className="font-deck-headline text-xs tracking-wider text-[#2D5A54] uppercase mb-1.5">
-              Panjim Bureau
-            </div>
-            <div className="space-y-1.5 text-[#2B2B2B] leading-relaxed">
-              <p>{brandMeta.address}</p>
-              <p className="text-[#2D5A54] font-bold">{brandMeta.phone}</p>
-              <p><a href={`mailto:${brandMeta.email}`} className="text-[#2B2B2B] hover:text-[#2D5A54] transition-colors">{brandMeta.email}</a></p>
-              <p className="pt-0.5 text-[#2D5A54] font-semibold">{brandMeta.presentedBy}</p>
+            {/* Primary Nav Links */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-wider text-white/85">
+              {primaryLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.path}
+                  className="hover:text-[#4ECDC4] transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#555555]">
-          <div>
-            © {new Date().getFullYear()} {brandMeta.name}. All rights reserved. Strategic Communications.
+        {/* ======================================================== */}
+        {/* BOTTOM ROW: Copyright & Scroll to Top Button             */}
+        {/* ======================================================== */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-[11px] sm:text-xs text-white/60 tracking-wider text-center sm:text-left">
+            Copyright © 2026 Global Aadhar, All Rights Reserved | Strategic Communications &amp; PR · Panjim, Goa
           </div>
 
+          {/* Scroll to Top Button */}
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-2 text-[#2D5A54] hover:text-[#23413C] transition-colors font-bold uppercase tracking-wider text-xs cursor-pointer"
+            aria-label="Scroll to top"
+            className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#4ECDC4] hover:text-[#081F1D] text-white flex items-center justify-center transition-all duration-200 shadow-sm cursor-pointer"
           >
-            <span>Back to top</span>
-            <ArrowUp className="w-4 h-4" />
+            <ChevronUp className="w-5 h-5" />
           </button>
         </div>
       </div>

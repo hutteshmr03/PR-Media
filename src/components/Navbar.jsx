@@ -1,199 +1,140 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
-export default function Navbar({ 
-  currentPage = 'home', 
-  onNavigatePage,
-  onNavigateContact, 
-  onNavigateHome, 
-  onNavigateSection 
-}) {
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll > 0) {
-        const currentProgress = (window.scrollY / totalScroll) * 100;
-        setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
-    { id: 'engagement-model', label: 'Engagement Model', href: '#/engagement-model' },
-    { id: 'commercial-models', label: 'Commercial Models', href: '#/commercial-models' },
-    { id: 'services', label: 'Core Services', href: '#/services' },
-    { id: 'who-we-are', label: 'Who We Are', href: '#/who-we-are' },
-    { id: 'who-we-serve', label: 'Who We Serve', href: '#/who-we-serve' },
-    { id: 'why-us', label: 'Why Us', href: '#/why-us' },
-    { id: 'contact', label: 'Contact', href: '#/contact' }
+    { label: 'WHO WE ARE', path: '/who-we-are' },
+    { label: 'WHAT WE DO', path: '/what-we-do' },
+    { label: 'OUR WORK', path: '/our-work' },
+    { label: 'WHY US', path: '/why-us' },
+    { label: 'CONTACT', path: '/contact' },
   ];
 
-  const handleLinkClick = (e, link) => {
-    e.preventDefault();
-    if (onNavigatePage) {
-      onNavigatePage(link.id);
-    } else if (link.id === 'contact' && onNavigateContact) {
-      onNavigateContact();
-    } else {
-      window.location.hash = link.href;
-    }
-    setMobileMenuOpen(false);
-  };
-
-  const handleBrandClick = (e) => {
-    e.preventDefault();
-    if (onNavigateHome) onNavigateHome();
-    else if (onNavigatePage) onNavigatePage('home');
-    else window.location.hash = '';
-    setMobileMenuOpen(false);
-  };
+  const isHome = location.pathname === '/';
 
   return (
-    <header className="sticky top-2 sm:top-3 z-50 px-3 sm:px-6 lg:px-8 max-w-[1340px] mx-auto w-full transition-all duration-300">
-      {/* Floating Pill Capsule Bar */}
-      <div className={`w-full rounded-full transition-all duration-300 border border-[#D5D1C8] relative overflow-hidden ${
-        scrolled 
-          ? 'bg-[#EDEBE7]/98 backdrop-blur-xl shadow-xl py-2 px-4 sm:px-6 lg:px-8 scale-[0.99]' 
-          : 'bg-[#EDEBE7]/98 backdrop-blur-xl shadow-md py-2.5 sm:py-3 px-4 sm:px-6 lg:px-8 scale-100'
-      }`}>
-        {/* Integrated Scroll Progress Line */}
-        <div 
-          className="absolute bottom-0 left-6 right-6 h-[2px] bg-transparent rounded-full overflow-hidden pointer-events-none"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 sm:h-[64px] flex items-center ${
+        isScrolled || !isHome
+          ? 'bg-[#E5E3DE]/95 backdrop-blur-md shadow-sm border-b border-[#D5D1C8]/70'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl w-full mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+        {/* Brand Logo & Strategic PR Tag */}
+        <Link
+          to="/"
+          className="group flex flex-col text-left focus:outline-none"
         >
-          <div 
-            className="h-full bg-[#2D5A54] transition-all duration-150 ease-out"
-            style={{ width: `${scrollProgress}%` }}
-          />
-        </div>
-
-        <div className="flex items-center justify-between gap-3 sm:gap-4">
-          {/* Brand Wordmark */}
-          <a 
-            href="#" 
-            onClick={handleBrandClick} 
-            className="flex flex-col group text-decoration-none cursor-pointer shrink-0"
+          <span
+            className={`text-sm sm:text-base font-extrabold tracking-widest uppercase transition-colors duration-200 ${
+              isScrolled || !isHome ? 'text-[#23413C]' : 'text-white'
+            }`}
           >
-            <div className={`font-deck-headline font-bold text-[#2D5A54] tracking-tight leading-none group-hover:text-[#23413C] transition-all whitespace-nowrap ${
-              scrolled ? 'text-base sm:text-lg xl:text-xl' : 'text-base sm:text-xl xl:text-2xl'
-            }`}>
-              GLOBAL AADHAR
-            </div>
-            <div className="font-deck-body text-[7.5px] sm:text-[9px] font-bold text-[#555555] tracking-[0.14em] sm:tracking-[0.16em] uppercase mt-0.5 whitespace-nowrap">
-              STRATEGIC COMMUNICATIONS
-            </div>
-          </a>
+            GLOBAL AADHAR
+          </span>
+          <span
+            className={`text-[8px] sm:text-[9px] tracking-[0.2em] uppercase font-semibold transition-colors duration-200 ${
+              isScrolled || !isHome ? 'text-[#2D5A54]' : 'text-[#4ECDC4]'
+            }`}
+          >
+            STRATEGIC PR · GOA
+          </span>
+        </Link>
 
-          {/* Clean Inline Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center justify-center gap-4 xl:gap-6 2xl:gap-7 font-deck-body text-xs xl:text-[13px] font-semibold text-[#2B2B2B] whitespace-nowrap">
-            {navLinks.map((link) => {
-              const isActive = currentPage === link.id;
-
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link)}
-                  className={`transition-colors py-1 relative cursor-pointer whitespace-nowrap shrink-0 ${
-                    isActive 
-                      ? 'text-[#2D5A54] font-bold' 
-                      : 'text-[#2B2B2B] hover:text-[#2D5A54]'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#2D5A54] rounded-full" />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* Right Action Button & Mobile Menu Toggle */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <button
-              type="button"
-              onClick={() => {
-                if (onNavigatePage) onNavigatePage('contact');
-                else if (onNavigateContact) onNavigateContact();
-                else window.location.hash = '#/contact';
-              }}
-              className={`hidden sm:inline-flex btn-primary-teal px-5 rounded-full cursor-pointer shadow-sm hover:shadow-md transition-all whitespace-nowrap font-bold ${
-                scrolled ? 'text-xs py-1.5' : 'text-xs py-2'
-              }`}
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-7">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              className={({ isActive }) =>
+                `text-xs font-bold tracking-wider uppercase transition-colors duration-200 py-1 ${
+                  isActive
+                    ? 'text-[#2D5A54] border-b-2 border-[#2D5A54]'
+                    : isScrolled || !isHome
+                    ? 'text-[#2B2B2B] hover:text-[#2D5A54]'
+                    : 'text-white/85 hover:text-white'
+                }`
+              }
             >
-              <span>Let's Talk</span>
-              <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
-            </button>
+              {link.label}
+            </NavLink>
+          ))}
+        </nav>
 
-            {/* Mobile Toggle Button */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-full border border-[#D5D1C8] bg-white/80 hover:bg-white text-[#2D5A54] transition-colors cursor-pointer shadow-2xs flex items-center justify-center w-9 h-9 active:scale-95"
-              aria-label="Toggle Navigation"
-            >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-            </button>
-          </div>
+        {/* CTA Button */}
+        <div className="hidden lg:flex items-center">
+          <Link
+            to="/contact"
+            className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-sm ${
+              isScrolled || !isHome
+                ? 'bg-[#2D5A54] text-white hover:bg-[#23413C]'
+                : 'bg-[#2D5A54] border border-[#4ECDC4]/50 text-white hover:bg-[#23413C] hover:border-[#4ECDC4]'
+            }`}
+          >
+            Let's Talk
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={`lg:hidden p-2 rounded-lg transition-colors focus:outline-none ${
+            isScrolled || !isHome ? 'text-[#23413C]' : 'text-white'
+          }`}
+          aria-label="Toggle navigation menu"
+        >
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="lg:hidden mt-2 rounded-3xl border border-[#D5D1C8] bg-[#EDEBE7]/98 backdrop-blur-xl p-4 sm:p-5 space-y-3 shadow-2xl overflow-hidden"
-          >
-            <nav className="flex flex-col space-y-1 font-deck-body text-xs sm:text-sm font-semibold text-[#2B2B2B]">
-              {navLinks.map((link) => {
-                const isActive = currentPage === link.id;
-                return (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link)}
-                    className={`px-4 py-2.5 rounded-2xl transition-all cursor-pointer font-medium flex items-center justify-between ${
-                      isActive 
-                        ? 'bg-[#2D5A54] text-white font-bold shadow-xs' 
-                        : 'hover:bg-[#2D5A54]/10 text-[#2B2B2B]'
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
-                  </a>
-                );
-              })}
-            </nav>
-            <div className="pt-2 sm:hidden border-t border-[#D5D1C8]/60">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (onNavigatePage) onNavigatePage('contact');
-                  else if (onNavigateContact) onNavigateContact();
-                  else window.location.hash = '#/contact';
-                }}
-                className="btn-primary-teal w-full justify-center text-xs py-3 rounded-full cursor-pointer shadow-md font-bold"
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed top-16 left-0 right-0 bg-[#E5E3DE] border-b border-[#D5D1C8] px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+          <nav className="flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `text-xs font-bold tracking-wider uppercase py-2 border-b border-[#D5D1C8]/40 ${
+                    isActive ? 'text-[#2D5A54] font-black' : 'text-[#2B2B2B]'
+                  }`
+                }
               >
-                <span>Let's Talk</span>
-                <ArrowUpRight className="w-4 h-4 ml-1.5" />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                {link.label}
+              </NavLink>
+            ))}
+            <Link
+              to="/contact"
+              className="mt-2 inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#2D5A54] text-white text-xs font-bold tracking-wider uppercase hover:bg-[#23413C]"
+            >
+              Let's Talk
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

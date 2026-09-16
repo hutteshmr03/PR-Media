@@ -1,68 +1,84 @@
-# Global Aadhar — Strategic Communications & PR
+# Global Aadhar — PR & Strategic Communications
 
-A modern, high-impact proof-of-concept website built for **Global Aadhar**, a Goa-based Public Relations and Strategic Communications company. This implementation strictly reflects the client's pitch deck content, structure, and brand identity.
-
----
-
-## 🎨 Brand Identity & Design System
-
-- **Primary Brand Color**: Deep Teal / Forest Green (`#3D6B64` and `#23413C`).
-- **Background**: Warm off-white / beige (`#E5E3DE` and `#EDEBE7`).
-- **Typography**: 
-  - Headlines: Tightly-tracked condensed bold sans-serif (`Archivo Black` / `Oswald` / `Anton`).
-  - Body text: Clean readable sans-serif (`Plus Jakarta Sans` / `Inter`).
-- **Tone**: Clean, confident, corporate-but-modern with generous whitespace and slide-header metadata lines.
+A world-class, multi-page website for **Global Aadhar**, a premier Goa-based Public Relations and Strategic Communications agency. Inspired by the editorial layout, clean typography, and bold imagery of **Burson Global** (`bursonglobal.com`).
 
 ---
 
-## 🚀 Built With
+## 🚀 Tech Stack
 
-- **React 18 / 19**
-- **Vite**
-- **Tailwind CSS**
-- **Framer Motion** (smooth scroll-in animations and transitions)
-- **Lucide React** (icons)
-- **Interactive SVG Growth Chart** (responsive digital marketing telemetry)
-
----
-
-## 📑 Sections Included (In Pitch Deck Order)
-
-1. **Hero**: Large stacked wordmark "GLOBAL AADHAR", tagline "BUILDING TRUST. CREATING IMPACT.", subtext, partner attribution, and primary CTA.
-2. **Who We Are**: Comprehensive company overview with 3 pillar cards and high-trust imagery.
-3. **Why Global Aadhar**: Six distinct advantages, floating capability badges, and detailed value propositions.
-4. **Our Six Core Services**: 
-   - Government Relations
-   - Media Production & PR
-   - Events & Experiences (Plan → Produce → Execute → Amplify 4-step process)
-   - CSR Communication
-   - Digital Marketing (with interactive growth chart & callout pills)
-   - Technology Solutions (Powered by Sumant Cloud)
-5. **Integrated Client Engagement Model**: Sequential 4-stage delivery framework (Discover → Strategy & Create → Activate & Amplify → Measure).
-6. **Who We Serve**: 3 sector cards (Corporates & Pharma, NGOs & Startups, Education & Government).
-7. **Engagement Models**: 2-column comparative structure with rounded teal header bar.
-8. **Why Partner With Global Aadhar**: Value proposition with partnership imagery and 3 strategic benefits.
-9. **Contact & Partner Desk**: Panjim headquarters details, leadership contact, and interactive consultation form.
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Routing**: [React Router DOM v6](https://reactrouter.com/) (Multi-Page Architecture)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **3D Graphics**: [Three.js](https://threejs.org/) + Interactive Node Network
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) + [GSAP](https://greensock.com/)
+- **Smooth Scroll**: [Lenis](https://github.com/darkroomengineering/lenis)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
 ---
 
-## 🛠️ Setup & Local Development
+## 🎨 Brand Identity & System
 
-### 1. Install Dependencies
+- **Primary Teal**: `#2D5A54`
+- **Dark Teal**: `#23413C`
+- **Deep Slate Teal**: `#0D2B28`
+- **Warm Beige Background**: `#E5E3DE`
+- **Light Accent Glow**: `#4ECDC4`
+- **Pure White**: `#FFFFFF`
+- **Body Text**: `#2B2B2B`
+
+---
+
+## 🗺️ Multi-Page Routing Architecture
+
+| Route | Page | Description |
+|---|---|---|
+| `/` | **Home** | Minimal 7-section landing page with interactive 3D network node animation, marquee ticker, stats, services switcher links, and featured work teasers. |
+| `/who-we-are` | **Who We Are** | 55vh hero, 3 strategic pillar cards, dual media showcase, 2-column advantage layout, and contact CTA strip. |
+| `/what-we-do` | **What We Do** | 55vh hero, 6-tab interactive service switcher supporting URL query pre-selection (`?tab=01` to `?tab=06`), verbatim deliverable lists, and methodology tags. |
+| `/our-work` | **Our Work** | 55vh hero, category filter pills (`All`, `Government PR`, `Media Production`, `Events`, `CSR`, `Digital`), animated 3-column card grid, and dark teal stats bar. |
+| `/why-us` | **Why Us** | 55vh hero, 3 core advantage cards, split commercial engagement table, 4-stage client process pipeline, and 3-sector target cards. |
+| `/contact` | **Contact** | 50vh hero, direct Panjim HQ details, 2-hour response SLA badge, NDA assurance, and 5-field inquiry form with confirmation state. |
+
+---
+
+## 📦 Getting Started
+
+### 1. Installation
 ```bash
+# Clone or navigate to project directory
+cd prmediaproject
+
+# Install dependencies
 npm install
 ```
 
-### 2. Start Development Server
+### 2. Run Locally in Development Mode
 ```bash
 npm run dev
 ```
-
-Open `http://localhost:5173` in your browser.
+Open your browser at `http://localhost:5173` (or the port displayed in your terminal).
 
 ### 3. Build for Production
 ```bash
 npm run build
 ```
 
-The output will be generated in the `dist/` directory, ready for deployment to Vercel, Netlify, or any static hosting provider.
+---
+
+## ☁️ Deployment (Vercel)
+
+1. Push your repository to **GitHub** or **GitLab**.
+2. Connect the repository in the **Vercel Dashboard**.
+3. Select the **Vite** preset (Build command: `npm run build`, Output directory: `dist`).
+4. For single-page app (SPA) routing on Vercel, ensure `vercel.json` contains:
+```json
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
+```
+5. Click **Deploy**.
+
+---
+
+## 📄 License & Ownership
+Copyright © 2026 Global Aadhar. All rights reserved.

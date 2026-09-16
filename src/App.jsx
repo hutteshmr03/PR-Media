@@ -1,223 +1,156 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Lenis from 'lenis';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Ticker from './components/Ticker';
-import WhoWeAre from './components/WhoWeAre';
-import WhyGlobalAadhar from './components/WhyGlobalAadhar';
-import Services from './components/Services';
-import ServiceDetailPage from './components/ServiceDetailPage';
-import CaseStudies from './components/CaseStudies';
-import RoiCalculator from './components/RoiCalculator';
-import ClientEngagementModel from './components/ClientEngagementModel';
-import WhoWeServe from './components/WhoWeServe';
-import EngagementModels from './components/EngagementModels';
-import WhyPartner from './components/WhyPartner';
-import Contact from './components/Contact';
-import ContactPage from './components/ContactPage';
-import StickyContactAffordance from './components/StickyContactAffordance';
 import Footer from './components/Footer';
-import ScrollProgress from './components/ScrollProgress';
-import BrandIntroSplash from './components/BrandIntroSplash';
-import BackgroundVideo from './components/BackgroundVideo';
+import ScrollToTop from './components/ScrollToTop';
+import PageTransition from './components/PageTransition';
+import SplashScreen from './components/SplashScreen';
 
-// Dedicated Standalone Pages
-import WhoWeArePage from './pages/WhoWeArePage';
-import WhyUsPage from './pages/WhyUsPage';
-import ServicesPage from './pages/ServicesPage';
-import EngagementModelPage from './pages/EngagementModelPage';
-import WhoWeServePage from './pages/WhoWeServePage';
-import CommercialModelsPage from './pages/CommercialModelsPage';
+// Lazy load pages for fast initial load and seamless performance
+const Home = lazy(() => import('./pages/Home'));
+const WhoWeAre = lazy(() => import('./pages/WhoWeAre'));
+const WhatWeDo = lazy(() => import('./pages/WhatWeDo'));
+const OurWork = lazy(() => import('./pages/OurWork'));
+const WhyUs = lazy(() => import('./pages/WhyUs'));
+const Contact = lazy(() => import('./pages/Contact'));
 
-function App() {
-  const parseRouteFromHash = () => {
-    if (typeof window === 'undefined') return { page: 'home', serviceId: 'gov-relations' };
-
-    const hash = window.location.hash.toLowerCase();
-    if (hash === '#contact' || hash === '#/contact' || hash === '#contact-page') {
-      return { page: 'contact', serviceId: 'gov-relations' };
-    }
-    if (hash === '#/who-we-are' || hash === '#about' || hash === '#who-we-are') {
-      return { page: 'who-we-are', serviceId: 'gov-relations' };
-    }
-    if (hash === '#/why-us' || hash === '#why-us') {
-      return { page: 'why-us', serviceId: 'gov-relations' };
-    }
-    if (hash === '#/services' || hash === '#services') {
-      return { page: 'services', serviceId: 'gov-relations' };
-    }
-    if (hash === '#/engagement-model' || hash === '#engagement-model') {
-      return { page: 'engagement-model', serviceId: 'gov-relations' };
-    }
-    if (hash === '#/who-we-serve' || hash === '#who-we-serve') {
-      return { page: 'who-we-serve', serviceId: 'gov-relations' };
-    }
-    if (hash === '#/commercial-models' || hash === '#models' || hash === '#commercial-models') {
-      return { page: 'commercial-models', serviceId: 'gov-relations' };
-    }
-    if (hash.startsWith('#service/') || hash.startsWith('#/service/')) {
-      const sId = hash.replace('#service/', '').replace('#/service/', '');
-      return { page: 'service-detail', serviceId: sId || 'gov-relations' };
-    }
-    return { page: 'home', serviceId: 'gov-relations' };
-  };
-
-  const initialRoute = parseRouteFromHash();
-  const [currentPage, setCurrentPage] = useState(initialRoute.page);
-  const [selectedServiceId, setSelectedServiceId] = useState(initialRoute.serviceId);
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const route = parseRouteFromHash();
-      setCurrentPage(route.page);
-      setSelectedServiceId(route.serviceId);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  const navigateToPage = (pageId) => {
-    setCurrentPage(pageId);
-    if (pageId === 'home') {
-      window.location.hash = '';
-    } else {
-      window.location.hash = `#/${pageId}`;
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const navigateToService = (serviceId) => {
-    setSelectedServiceId(serviceId);
-    setCurrentPage('service-detail');
-    window.location.hash = `#/service/${serviceId}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
+function PageFallback() {
   return (
-    <div className="min-h-screen bg-[#E5E3DE] text-[#2B2B2B] selection:bg-[#2D5A54] selection:text-white relative agency-bg-pattern">
-      {/* Media Mantra Style Live Background Video Layer */}
-      <BackgroundVideo />
-
-      {/* Burson-Style Full-Screen Brand Intro/Splash Animation (First Visit Only) */}
-      <BrandIntroSplash />
-
-      {/* Dynamic Top Scroll Progress Indicator */}
-      <ScrollProgress />
-
-      {/* Sticky Header with Exact Multi-Page Navigation Handlers */}
-      <Navbar 
-        currentPage={currentPage} 
-        onNavigatePage={navigateToPage}
-        onNavigateContact={() => navigateToPage('contact')}
-        onNavigateHome={() => navigateToPage('home')}
-      />
-
-      {/* Standalone Page Routing Switch */}
-      <main className="relative z-10">
-        {currentPage === 'who-we-are' ? (
-          <WhoWeArePage 
-            onNavigateContact={() => navigateToPage('contact')}
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'why-us' ? (
-          <WhyUsPage 
-            onNavigateContact={() => navigateToPage('contact')}
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'services' ? (
-          <ServicesPage 
-            onNavigateContact={() => navigateToPage('contact')}
-            onNavigateService={navigateToService}
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'engagement-model' ? (
-          <EngagementModelPage 
-            onNavigateContact={() => navigateToPage('contact')}
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'who-we-serve' ? (
-          <WhoWeServePage 
-            onNavigateContact={() => navigateToPage('contact')}
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'commercial-models' ? (
-          <CommercialModelsPage 
-            onNavigateContact={() => navigateToPage('contact')}
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'contact' ? (
-          <ContactPage 
-            onNavigateHome={() => navigateToPage('home')}
-          />
-        ) : currentPage === 'service-detail' ? (
-          <ServiceDetailPage 
-            serviceId={selectedServiceId}
-            onNavigateHome={() => navigateToPage('services')}
-            onNavigateContact={() => navigateToPage('contact')}
-            onSelectService={(sId) => navigateToService(sId)}
-          />
-        ) : (
-          /* Home Hub Overview Page */
-          <div>
-            {/* 1. Hero */}
-            <Hero 
-              onNavigateContact={() => navigateToPage('contact')}
-              onNavigateService={navigateToService}
-            />
-
-            {/* 2. Regional Press & Broadcast Wire Feed */}
-            <Ticker />
-
-            {/* 3. Who We Are */}
-            <WhoWeAre onNavigateContact={() => navigateToPage('contact')} />
-
-            {/* 4. Why Global Aadhar */}
-            <WhyGlobalAadhar onNavigateContact={() => navigateToPage('contact')} />
-
-            {/* 5. Our Six Core Services */}
-            <Services 
-              onNavigateContact={() => navigateToPage('contact')} 
-              onNavigateService={navigateToService}
-            />
-
-            {/* 6. How We Work */}
-            <ClientEngagementModel onNavigateContact={() => navigateToPage('contact')} />
-
-            {/* 7. Proven Track Record & Regional Case Studies */}
-            <CaseStudies onNavigateContact={() => navigateToPage('contact')} />
-
-            {/* 8. Who We Serve */}
-            <WhoWeServe onNavigateContact={() => navigateToPage('contact')} />
-
-            {/* 10. Why Partner With Global Aadhar */}
-            <WhyPartner onNavigateContact={() => navigateToPage('contact')} />
-
-            {/* 11. Engagement Models & Retainers */}
-            <EngagementModels 
-              onNavigateContact={() => navigateToPage('contact')} 
-              onNavigateCommercialModels={() => navigateToPage('commercial-models')}
-              onNavigatePage={navigateToPage}
-            />
-
-            {/* 12. Full-Bleed Dark Ink CTA Band */}
-            <Contact onNavigateContact={() => navigateToPage('contact')} />
-          </div>
-        )}
-      </main>
-
-      {/* Footer with Navigation Handlers */}
-      <Footer 
-        currentPage={currentPage} 
-        onNavigatePage={navigateToPage}
-        onNavigateContact={() => navigateToPage('contact')}
-        onNavigateHome={() => navigateToPage('home')}
-      />
-
-      {/* Media Mantra Sticky Contact Affordance (WhatsApp / Direct Phone) */}
-      <StickyContactAffordance onNavigateContact={() => navigateToPage('contact')} />
+    <div className="w-full min-h-[75vh] flex flex-col items-center justify-center bg-[#E5E3DE] gap-4">
+      <div className="w-8 h-8 rounded-full border-2 border-[#2D5A54]/30 border-t-[#2D5A54] animate-spin" />
+      <span className="text-[10px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase">
+        GLOBAL AADHAR
+      </span>
     </div>
   );
 }
 
-export default App;
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <PageTransition>
+              <Home />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/who-we-are"
+          element={
+            <PageTransition>
+              <WhoWeAre />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/what-we-do"
+          element={
+            <PageTransition>
+              <WhatWeDo />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/our-work"
+          element={
+            <PageTransition>
+              <OurWork />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/why-us"
+          element={
+            <PageTransition>
+              <WhyUs />
+            </PageTransition>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageTransition>
+              <Contact />
+            </PageTransition>
+          }
+        />
+        {/* Catch-all route redirects to Home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+export default function App() {
+  const [splashDone, setSplashDone] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    try {
+      return sessionStorage.getItem('splashShown') === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+
+  const handleSplashComplete = () => {
+    try {
+      sessionStorage.setItem('splashShown', 'true');
+    } catch (e) {}
+    setSplashDone(true);
+  };
+
+  // Initialize Lenis smooth scroll for buttery fluid motion
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    const frameId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      lenis.destroy();
+    };
+  }, []);
+
+  return (
+    <BrowserRouter>
+      {/* Cinematic Intro Splash Screen */}
+      {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
+
+      <div className="min-h-screen bg-[#E5E3DE] text-[#2B2B2B] selection:bg-[#2D5A54] selection:text-white antialiased relative flex flex-col justify-between font-sans">
+        {/* Helper to reset scroll position on route change */}
+        <ScrollToTop />
+
+        {/* Global Navigation Bar */}
+        <Navbar />
+
+        {/* Page Content with Lazy Suspense and Animated Transitions */}
+        <main className="flex-grow">
+          <Suspense fallback={<PageFallback />}>
+            <AnimatedRoutes />
+          </Suspense>
+        </main>
+
+        {/* Global Footer */}
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
