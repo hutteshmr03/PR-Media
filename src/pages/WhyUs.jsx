@@ -1,25 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Layers, Globe, BarChart3, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Layers, Globe, BarChart3, CheckCircle2 } from 'lucide-react';
 import { engagementModels, clientProcessSteps, sectorsServed } from '../data/engagement';
 import ProcessSteps from '../components/ProcessSteps';
 
 const advantages = [
   {
+    badge: 'ADVANTAGE 01',
     icon: Layers,
     title: 'INTEGRATED EXPERTISE',
     desc: 'Strategic PR, media production, events, digital marketing, and tech capability all under one roof. No multiple vendor coordination.',
+    points: [
+      'End-to-End Strategic PR & Media',
+      'Events & Digital Marketing Under One Roof',
+      'Zero Vendor Coordination Overheads',
+    ],
+    link: '/what-we-do',
   },
   {
+    badge: 'ADVANTAGE 02',
     icon: Globe,
     title: 'LOCAL NETWORK & REACH',
     desc: 'Strongest media, government, and institutional connections in Goa and expanding across national networks.',
+    points: [
+      'Goa Media & Institutional Network',
+      'Statewide Government Relations',
+      'Expanding Pan-India Capabilities',
+    ],
+    link: '/who-we-are',
   },
   {
+    badge: 'ADVANTAGE 03',
     icon: BarChart3,
     title: 'MEASURABLE IMPACT',
     desc: 'Every campaign tracked, measured, and reported with transparent KPIs, media coverage logs, and actionable ROI metrics.',
+    points: [
+      'Transparent KPIs & Metric Tracking',
+      'Media Coverage Logs & Audits',
+      'Actionable ROI Performance Reports',
+    ],
+    link: '/our-work',
   },
 ];
 
@@ -196,11 +217,11 @@ export default function WhyUs() {
       </section>
 
       {/* ======================================================== */}
-      {/* Section B: 3 Advantage Cards (Beige)                     */}
+      {/* Section B: 3 Advantage Cards (Smooth Hover Animation)    */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#E5E3DE]">
+      <section className="py-12 sm:py-16 bg-[#E5E3DE]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
             <span className="text-[11px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase block mb-1">
               Our Core Strengths
             </span>
@@ -212,32 +233,67 @@ export default function WhyUs() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
             {advantages.map((adv, idx) => {
               const IconComp = adv.icon;
               return (
                 <motion.div
                   key={adv.title}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white rounded-xl p-5 sm:p-6 border border-[#D5D1C8]/70 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                  whileHover={{ y: -6, scale: 1.015 }}
+                  className="group relative rounded-3xl p-6 sm:p-7 bg-[#DDD9D0] hover:bg-[#3D6E65] border border-[#CCC8BD] hover:border-[#3D6E65] shadow-sm hover:shadow-2xl transition-all duration-300 ease-out flex flex-col justify-between cursor-pointer"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-lg bg-[#2D5A54] flex items-center justify-center text-white mb-4 shadow-sm">
-                      <IconComp className="w-5 h-5 text-[#4ECDC4]" />
+                    {/* Top Row: Icon Squircle + Advantage Pill */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-[#CCC8BD] group-hover:bg-white text-[#23413C] group-hover:text-[#2D5A54] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:shadow-md">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <span className="px-3.5 py-1.5 rounded-full bg-[#CCC8BD] group-hover:bg-white text-[#23413C] group-hover:text-[#2D5A54] text-[10px] sm:text-[11px] font-bold tracking-wider uppercase transition-all duration-300 shadow-sm">
+                        {adv.badge}
+                      </span>
                     </div>
+
+                    {/* Headline */}
                     <h3
-                      className="text-base sm:text-lg font-black text-[#23413C] uppercase tracking-tight mb-2"
+                      className="text-lg sm:text-xl font-black text-[#23413C] group-hover:text-white uppercase tracking-tight mb-3 transition-colors duration-300"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {adv.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2B2B2B] leading-relaxed">
+
+                    {/* Description */}
+                    <p className="text-xs sm:text-sm text-[#2B2B2B]/85 group-hover:text-white/95 leading-relaxed transition-colors duration-300 mb-6">
                       {adv.desc}
                     </p>
+
+                    {/* Divider */}
+                    <div className="w-full h-[1px] bg-[#CCC8BD] group-hover:bg-white/20 my-5 transition-colors duration-300" />
+
+                    {/* 3 Checklist points */}
+                    <div className="flex flex-col gap-2.5 mb-6">
+                      {adv.points.map((point) => (
+                        <div key={point} className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-[#2D5A54] group-hover:text-[#4ECDC4] flex-shrink-0 transition-colors duration-300" />
+                          <span className="text-xs font-bold text-[#23413C] group-hover:text-white transition-colors duration-300">
+                            {point}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+
+                  {/* Bottom Explore Button */}
+                  <Link
+                    to={adv.link}
+                    className="w-full py-3 px-5 rounded-full bg-[#CCC8BD]/80 group-hover:bg-white text-[#23413C] group-hover:text-[#2D5A54] font-bold text-xs uppercase tracking-wider flex items-center justify-between transition-all duration-300 shadow-sm group-hover:shadow-lg mt-2"
+                  >
+                    <span>EXPLORE ADVANTAGE</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </Link>
                 </motion.div>
               );
             })}
