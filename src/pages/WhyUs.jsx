@@ -59,26 +59,26 @@ export default function WhyUs() {
       </section>
 
       {/* ======================================================== */}
-      {/* Section A2: STATS WITH ANIMATED SVG ICONS (Teal Bar)      */}
+      {/* Section A2: STATS WITH ANIMATED SVG ICONS (High Contrast) */}
       {/* ======================================================== */}
-      <section className="py-8 sm:py-10 bg-[#16332F] text-white border-y border-[#2C5E55]/70">
+      <section className="py-8 sm:py-10 bg-[#E5E3DE] border-b border-[#D5D1C8]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Stat 1: 500+ Campaigns (Bar Chart Animated SVG) */}
             <motion.div
-              whileHover={{ y: -4, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0D2B28] border border-[#2D5A54] hover:border-[#4ECDC4] hover:shadow-[0_0_20px_rgba(78,205,196,0.2)] transition-all flex flex-col items-center text-center"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Bar Chart SVG */}
-              <div className="w-12 h-12 mb-3 rounded-xl bg-[#2D5A54]/60 group-hover:bg-[#4ECDC4]/20 flex items-center justify-center transition-colors">
-                <svg className="w-6 h-6 text-[#4ECDC4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <motion.line
                     x1="18" y1="20" x2="18" y2="4"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="stroke-[#10B981]"
+                    className="stroke-[#2D5A54] group-hover:stroke-[#4ECDC4]"
                   />
                   <motion.line
                     x1="12" y1="20" x2="12" y2="10"
@@ -95,25 +95,25 @@ export default function WhyUs() {
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#4ECDC4] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 500+
               </div>
-              <div className="text-[11px] font-bold text-[#4ECDC4] uppercase tracking-wider mt-0.5">
+              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
                 Campaigns Delivered
               </div>
             </motion.div>
 
             {/* Stat 2: 15+ Years (Calendar Animated SVG) */}
             <motion.div
-              whileHover={{ y: -4, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0D2B28] border border-[#2D5A54] hover:border-[#4ECDC4] hover:shadow-[0_0_20px_rgba(78,205,196,0.2)] transition-all flex flex-col items-center text-center"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Calendar SVG */}
-              <div className="w-12 h-12 mb-3 rounded-xl bg-[#2D5A54]/60 group-hover:bg-[#4ECDC4]/20 flex items-center justify-center transition-colors">
-                <svg className="w-6 h-6 text-[#4ECDC4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
                   <line x1="8" y1="2" x2="8" y2="6" />
@@ -123,71 +123,71 @@ export default function WhyUs() {
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="stroke-[#10B981]"
+                    className="stroke-[#2D5A54] group-hover:stroke-[#4ECDC4]"
                   />
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#4ECDC4] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 15+
               </div>
-              <div className="text-[11px] font-bold text-[#4ECDC4] uppercase tracking-wider mt-0.5">
+              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
                 Years Experience
               </div>
             </motion.div>
 
             {/* Stat 3: 180+ Media Contacts (Signal / Broadcast Pulse SVG) */}
             <motion.div
-              whileHover={{ y: -4, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0D2B28] border border-[#2D5A54] hover:border-[#4ECDC4] hover:shadow-[0_0_20px_rgba(78,205,196,0.2)] transition-all flex flex-col items-center text-center"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Radio Tower Pulse SVG */}
-              <div className="w-12 h-12 mb-3 rounded-xl bg-[#2D5A54]/60 group-hover:bg-[#4ECDC4]/20 flex items-center justify-center transition-colors">
-                <svg className="w-6 h-6 text-[#4ECDC4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4.93 19.07a10 10 0 0 1 0-14.14" className="animate-pulse" />
                   <path d="M7.76 16.24a6 6 0 0 1 0-8.48" />
-                  <circle cx="12" cy="12" r="2" fill="currentColor" className="text-[#10B981]" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" />
                   <path d="M16.24 7.76a6 6 0 0 1 0 8.48" />
                   <path d="M19.07 4.93a10 10 0 0 1 0 14.14" className="animate-pulse" />
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#4ECDC4] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 180+
               </div>
-              <div className="text-[11px] font-bold text-[#4ECDC4] uppercase tracking-wider mt-0.5">
+              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
                 Media Network
               </div>
             </motion.div>
 
-            {/* Stat 4: Goa #1 PR (Trophy Glowing SVG) */}
+            {/* Stat 4: Goa #1 PR (Trophy Animated SVG) */}
             <motion.div
-              whileHover={{ y: -4, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-4 sm:p-5 rounded-2xl bg-[#0D2B28] border border-[#2D5A54] hover:border-[#4ECDC4] hover:shadow-[0_0_20px_rgba(78,205,196,0.2)] transition-all flex flex-col items-center text-center"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Trophy SVG */}
-              <div className="w-12 h-12 mb-3 rounded-xl bg-[#2D5A54]/60 group-hover:bg-[#4ECDC4]/20 flex items-center justify-center transition-colors">
-                <svg className="w-6 h-6 text-[#10B981] group-hover:text-[#4ECDC4] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
                   <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
                   <path d="M4 22h16" />
                   <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34" />
-                  <path d="M6 4h12v5a6 6 0 0 1-12 0V4z" fill="currentColor" fillOpacity="0.2" />
+                  <path d="M6 4h12v5a6 6 0 0 1-12 0V4z" fill="currentColor" fillOpacity="0.15" />
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#4ECDC4] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 Goa #1 PR
               </div>
-              <div className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider mt-0.5">
+              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
                 Strategic Agency
               </div>
             </motion.div>
