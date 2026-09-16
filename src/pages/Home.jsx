@@ -270,34 +270,41 @@ export default function Home() {
       <Ticker />
 
       {/* ======================================================== */}
-      {/* 1c. ABOUT TEASER (Beige, 2-col with Interactive Hover Stats) */}
+      {/* 1c. ABOUT TEASER (Warm, Clean & Inviting 2-Col Spread)    */}
       {/* ======================================================== */}
-      <section id="home-about" className="py-10 sm:py-14 bg-[#E5E3DE] border-b border-[#D5D1C8]/60">
+      <section id="home-about" className="py-14 sm:py-20 bg-[#E5E3DE] border-b border-[#D5D1C8]/80">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-            {/* Left: Headline & Link */}
-            <div className="lg:col-span-5">
-              <span className="text-[11px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase block mb-1.5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
+            {/* Left: Headline & Friendly Button */}
+            <div className="lg:col-span-5 flex flex-col gap-3">
+              <span className="text-xs font-bold tracking-[0.2em] text-[#2D5A54] uppercase block">
                 Who We Are
               </span>
-              <Link
-                to="/who-we-are"
-                className="group inline-flex items-center gap-2 text-xl sm:text-2xl lg:text-3xl font-black text-[#23413C] uppercase tracking-tight hover:text-[#2D5A54] transition-colors"
+              <h2
+                className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#23413C] uppercase tracking-tight"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
-                <span>WHO WE ARE</span>
-                <ArrowUpRight className="w-6 h-6 text-[#2D5A54] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-              </Link>
+                WHO WE ARE
+              </h2>
+              <div className="pt-2">
+                <Link
+                  to="/who-we-are"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#2D5A54] text-[#23413C] hover:text-white border border-[#D5D1C8] hover:border-[#2D5A54] text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm hover:shadow-md"
+                >
+                  <span>Learn More About Us</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
 
-            {/* Right: One Sentence + 3 Interactive Hover Stats */}
+            {/* Right: Intro text + 3 Large, Friendly Stat Cards */}
             <div className="lg:col-span-7 flex flex-col gap-6">
-              <p className="text-sm sm:text-base text-[#2B2B2B] leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-[#2B2B2B] leading-relaxed font-normal">
                 A Goa-based PR firm embedded in the region's media ecosystem, institutional networks, and government landscape.
               </p>
 
-              {/* 3 Stats in a Row with Hover Animation Cards */}
-              <div className="grid grid-cols-3 gap-2.5 sm:gap-3 pt-4 border-t border-[#D5D1C8]">
+              {/* 3 Friendly Stat Cards */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 {[
                   { num: '500+', label: 'Campaigns' },
                   { num: '15+', label: 'Years' },
@@ -305,31 +312,21 @@ export default function Home() {
                 ].map((stat, sIdx) => (
                   <motion.div
                     key={sIdx}
-                    whileHover={{ y: -4, scale: 1.03 }}
+                    whileHover={{ y: -4, scale: 1.02 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 20 }}
-                    className="p-3 sm:p-4 rounded-xl bg-[#DDD9D2]/40 hover:bg-white/80 border border-transparent hover:border-[#2D5A54]/20 hover:shadow-md transition-all duration-300 cursor-default"
+                    className="p-4 sm:p-5 rounded-2xl bg-white border border-[#D5D1C8] shadow-sm hover:shadow-md hover:border-[#2D5A54]/40 transition-all duration-300 text-center flex flex-col justify-center"
                   >
                     <div
-                      className="text-xl sm:text-2xl lg:text-3xl font-black text-[#23413C] tracking-tight transition-colors duration-300 hover:text-[#2D5A54]"
+                      className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#23413C] tracking-tight transition-colors duration-300 hover:text-[#2D5A54]"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {stat.num}
                     </div>
-                    <div className="text-[10px] sm:text-xs font-bold text-[#2D5A54] tracking-wider uppercase mt-0.5">
+                    <div className="text-[11px] sm:text-xs font-bold text-[#2D5A54] tracking-wider uppercase mt-1">
                       {stat.label}
                     </div>
                   </motion.div>
                 ))}
-              </div>
-
-              <div>
-                <Link
-                  to="/who-we-are"
-                  className="group inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-[#2D5A54] hover:text-[#23413C] transition-colors"
-                >
-                  <span className="group-hover:underline">Learn More</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
               </div>
             </div>
           </div>
@@ -337,17 +334,17 @@ export default function Home() {
       </section>
 
       {/* ======================================================== */}
-      {/* 1d. SERVICES TEASER (Dark Teal, Interactive Hover Cards) */}
+      {/* 1d. SERVICES TEASER (Warm Dark Green, Clear Friendly Cards) */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#23413C] text-white">
+      <section className="py-14 sm:py-20 bg-[#23413C] text-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-4 border-b border-white/10 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/15 gap-4">
             <div>
-              <span className="text-[11px] font-bold tracking-[0.25em] text-[#4ECDC4] uppercase block mb-1">
+              <span className="text-xs font-bold tracking-[0.2em] text-[#4ECDC4] uppercase block mb-1">
                 Core Practices
               </span>
               <h2
-                className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-white"
+                className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 WHAT WE DO
@@ -355,31 +352,28 @@ export default function Home() {
             </div>
             <Link
               to="/what-we-do"
-              className="group text-xs font-bold tracking-wider uppercase text-[#4ECDC4] hover:text-white inline-flex items-center gap-1.5 transition-colors"
+              className="group text-xs font-bold tracking-wider uppercase text-[#4ECDC4] hover:text-white inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 hover:border-[#4ECDC4] transition-all duration-300"
             >
               <span>Explore All Services</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
 
-          {/* 6 Interactive Hover Cards with Spring Physics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          {/* 6 Clean, Friendly Interactive Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {servicesTeaser.map((srv) => (
               <motion.div
                 key={srv.num}
-                whileHover={{ y: -3, scale: 1.015 }}
+                whileHover={{ y: -4, scale: 1.015 }}
                 whileTap={{ scale: 0.99 }}
                 transition={{ type: 'spring', stiffness: 350, damping: 22 }}
               >
                 <Link
                   to={`/what-we-do?tab=${srv.tab}`}
-                  className="group relative overflow-hidden p-4 sm:p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[#4ECDC4] hover:bg-white/10 hover:shadow-[0_10px_30px_rgba(78,205,196,0.12)] transition-all duration-300 flex items-center justify-between"
+                  className="group relative overflow-hidden p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#4ECDC4] hover:bg-white/10 hover:shadow-xl transition-all duration-300 flex items-center justify-between"
                 >
-                  {/* Subtle hover gradient shimmer */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#4ECDC4]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-
-                  <div className="flex items-center gap-3 relative z-10">
-                    <span className="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-[#4ECDC4]/20 border border-white/10 group-hover:border-[#4ECDC4]/40 flex items-center justify-center text-xs font-mono font-bold text-[#4ECDC4] transition-all duration-300">
+                  <div className="flex items-center gap-3.5">
+                    <span className="w-8 h-8 rounded-xl bg-white/10 group-hover:bg-[#4ECDC4] group-hover:text-[#0D2B28] border border-white/15 group-hover:border-[#4ECDC4] flex items-center justify-center text-xs font-mono font-bold text-[#4ECDC4] transition-all duration-300">
                       {srv.num}
                     </span>
                     <span
@@ -389,7 +383,7 @@ export default function Home() {
                       {srv.name}
                     </span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#4ECDC4] group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:scale-110 transition-all duration-300 relative z-10" />
+                  <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-[#4ECDC4] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                 </Link>
               </motion.div>
             ))}
