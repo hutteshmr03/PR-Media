@@ -12,6 +12,7 @@ const tabOptions = [
   { id: '04', label: '04 CSR' },
   { id: '05', label: '05 Digital' },
   { id: '06', label: '06 Technology' },
+  { id: '07', label: '07 Project Finance' },
 ];
 
 export default function WhatWeDo() {
@@ -39,12 +40,12 @@ export default function WhatWeDo() {
       {/* ======================================================== */}
       {/* Section A: Page Hero (Compact & Editorial)               */}
       {/* ======================================================== */}
-      <section className="relative w-full py-14 sm:py-18 min-h-[320px] flex items-center justify-center bg-[#0D2B28] text-white pt-24 px-6 sm:px-8">
+      <section className="relative w-full py-14 sm:py-18 min-h-[320px] flex items-center justify-center bg-[#0A192F] text-white pt-24 px-6 sm:px-8">
         <div className="max-w-4xl mx-auto text-center z-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-bold tracking-[0.25em] text-[#4ECDC4] uppercase block mb-2"
+            className="text-[11px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block mb-2"
           >
             Capabilities &amp; Practices
           </motion.span>
@@ -63,7 +64,7 @@ export default function WhatWeDo() {
             transition={{ delay: 0.2 }}
             className="mt-3.5 text-sm sm:text-base text-white/85 font-normal leading-relaxed max-w-2xl mx-auto"
           >
-            Six integrated service pillars — each designed to build trust, amplify impact, and drive measurable communication outcomes.
+            Seven integrated service pillars — each designed to build trust, amplify impact, and drive measurable outcomes.
           </motion.p>
         </div>
       </section>
@@ -71,10 +72,10 @@ export default function WhatWeDo() {
       {/* ======================================================== */}
       {/* Section B: Animated Tab Switcher & Content (Beige)       */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#E5E3DE]">
+      <section className="py-10 sm:py-14 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Tabs Bar */}
-          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 mb-6 no-scrollbar border-b border-[#D5D1C8]">
+          <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 mb-6 no-scrollbar border-b border-[#E2E8F0]">
             {tabOptions.map((t) => {
               const isActive = activeTab === t.id;
               return (
@@ -83,13 +84,13 @@ export default function WhatWeDo() {
                   onClick={() => handleTabChange(t.id)}
                   className="relative py-2.5 px-3.5 sm:px-4 whitespace-nowrap text-xs font-bold tracking-wider uppercase transition-colors focus:outline-none cursor-pointer"
                 >
-                  <span className={isActive ? 'text-[#23413C] font-black' : 'text-[#2B2B2B]/60 hover:text-[#23413C]'}>
+                  <span className={isActive ? 'text-[#0C2340] font-black' : 'text-[#1E293B]/60 hover:text-[#0C2340]'}>
                     {t.label}
                   </span>
                   {isActive && (
                     <motion.div
                       layoutId="whatWeDoTabUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#2D5A54] rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#112842] rounded-full"
                       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                     />
                   )}
@@ -99,7 +100,7 @@ export default function WhatWeDo() {
           </div>
 
           {/* Active Tab Panel */}
-          <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 border border-[#D5D1C8]/70 shadow-sm min-h-[440px]">
+          <div className="bg-white rounded-2xl p-5 sm:p-8 lg:p-10 border border-[#E2E8F0]/70 shadow-sm min-h-[440px]">
             <AnimatePresence mode="wait">
               {/* TAB 01: GOVERNMENT RELATIONS */}
               {activeTab === '01' && (
@@ -111,7 +112,7 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
                 >
-                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0]">
                     <img
                       src={currentService.image}
                       alt={currentService.title}
@@ -122,21 +123,66 @@ export default function WhatWeDo() {
 
                   <div className="lg:col-span-6 flex flex-col gap-3.5">
                     <h3
-                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {currentService.headline}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold">
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold">
                       {currentService.tagline}
                     </p>
                     <div className="flex flex-col gap-2.5 mt-1">
                       {currentService.items?.map((item) => (
-                        <div key={item.title} className="p-3.5 rounded-lg bg-[#EDEBE7] border border-[#D5D1C8]/60">
-                          <h4 className="text-xs font-black text-[#23413C] uppercase tracking-wide mb-0.5">
+                        <div key={item.title} className="p-3.5 rounded-lg bg-[#F1F3F5] border border-[#E2E8F0]/60">
+                          <h4 className="text-xs font-black text-[#0C2340] uppercase tracking-wide mb-0.5">
                             {item.num} {item.title}
                           </h4>
-                          <p className="text-xs text-[#2B2B2B] leading-relaxed">
+                          <p className="text-xs text-[#1E293B] leading-relaxed">
+                            {item.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* TAB 07: PROJECT FINANCE TIE-UP */}
+              {activeTab === '07' && (
+                <motion.div
+                  key="tab-07"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3 }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
+                >
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0]">
+                    <img
+                      src={currentService.image}
+                      alt={currentService.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 brightness-100 contrast-[1.02] saturate-[1.05]"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="lg:col-span-6 flex flex-col gap-3.5">
+                    <h3
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
+                      style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
+                    >
+                      {currentService.headline}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold">
+                      {currentService.tagline}
+                    </p>
+                    <div className="flex flex-col gap-2.5 mt-1">
+                      {currentService.items?.map((item) => (
+                        <div key={item.title} className="p-3.5 rounded-lg bg-[#F1F3F5] border border-[#E2E8F0]/60">
+                          <h4 className="text-xs font-black text-[#0C2340] uppercase tracking-wide mb-0.5">
+                            {item.num} {item.title}
+                          </h4>
+                          <p className="text-xs text-[#1E293B] leading-relaxed">
                             {item.desc}
                           </p>
                         </div>
@@ -158,21 +204,21 @@ export default function WhatWeDo() {
                 >
                   <div className="lg:col-span-6 flex flex-col gap-3.5 order-2 lg:order-1">
                     <h3
-                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {currentService.headline}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold">
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold">
                       {currentService.tagline}
                     </p>
                     <div className="flex flex-col gap-2.5 mt-1">
                       {currentService.items?.map((item) => (
-                        <div key={item.title} className="p-3.5 rounded-lg bg-[#EDEBE7] border border-[#D5D1C8]/60">
-                          <h4 className="text-xs font-black text-[#23413C] uppercase tracking-wide mb-0.5">
+                        <div key={item.title} className="p-3.5 rounded-lg bg-[#F1F3F5] border border-[#E2E8F0]/60">
+                          <h4 className="text-xs font-black text-[#0C2340] uppercase tracking-wide mb-0.5">
                             {item.num} {item.title}
                           </h4>
-                          <p className="text-xs text-[#2B2B2B] leading-relaxed">
+                          <p className="text-xs text-[#1E293B] leading-relaxed">
                             {item.desc}
                           </p>
                         </div>
@@ -180,7 +226,7 @@ export default function WhatWeDo() {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8] order-1 lg:order-2">
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0] order-1 lg:order-2">
                     <img
                       src={currentService.image}
                       alt={currentService.title}
@@ -203,18 +249,18 @@ export default function WhatWeDo() {
                 >
                   <div>
                     <h3
-                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {currentService.headline}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold mt-0.5">
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold mt-0.5">
                       {currentService.tagline}
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                    <div className="lg:col-span-5 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                    <div className="lg:col-span-5 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0]">
                       <img
                         src={currentService.image}
                         alt={currentService.title}
@@ -239,7 +285,7 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
                 >
-                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0]">
                     <img
                       src={currentService.image}
                       alt={currentService.title}
@@ -250,21 +296,21 @@ export default function WhatWeDo() {
 
                   <div className="lg:col-span-6 flex flex-col gap-3.5">
                     <h3
-                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {currentService.headline}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold">
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold">
                       {currentService.tagline}
                     </p>
                     <div className="flex flex-col gap-2.5 mt-1">
                       {currentService.items?.map((item) => (
-                        <div key={item.title} className="p-3.5 rounded-lg bg-[#EDEBE7] border border-[#D5D1C8]/60">
-                          <h4 className="text-xs font-black text-[#23413C] uppercase tracking-wide mb-0.5">
+                        <div key={item.title} className="p-3.5 rounded-lg bg-[#F1F3F5] border border-[#E2E8F0]/60">
+                          <h4 className="text-xs font-black text-[#0C2340] uppercase tracking-wide mb-0.5">
                             {item.num} {item.title}
                           </h4>
-                          <p className="text-xs text-[#2B2B2B] leading-relaxed">
+                          <p className="text-xs text-[#1E293B] leading-relaxed">
                             {item.desc}
                           </p>
                         </div>
@@ -284,7 +330,7 @@ export default function WhatWeDo() {
                   transition={{ duration: 0.3 }}
                   className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
                 >
-                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8]">
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0]">
                     <img
                       src={currentService.image}
                       alt={currentService.title}
@@ -295,18 +341,18 @@ export default function WhatWeDo() {
 
                   <div className="lg:col-span-6 flex flex-col gap-3.5">
                     <h3
-                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {currentService.headline}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold">
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold">
                       {currentService.tagline}
                     </p>
                     <div className="flex flex-col gap-2.5 mt-1">
                       {currentService.badges?.map((badge) => (
-                        <div key={badge} className="px-3.5 py-2.5 rounded-lg bg-[#2D5A54] text-white text-xs font-semibold flex items-center gap-2 shadow-sm">
-                          <CheckCircle2 className="w-4 h-4 text-[#4ECDC4] flex-shrink-0" />
+                        <div key={badge} className="px-3.5 py-2.5 rounded-lg bg-[#112842] text-white text-xs font-semibold flex items-center gap-2 shadow-sm">
+                          <CheckCircle2 className="w-4 h-4 text-[#D4AF37] flex-shrink-0" />
                           <span>{badge}</span>
                         </div>
                       ))}
@@ -327,21 +373,21 @@ export default function WhatWeDo() {
                 >
                   <div className="lg:col-span-6 flex flex-col gap-3.5 order-2 lg:order-1">
                     <h3
-                      className="text-xl sm:text-2xl font-black text-[#23413C] uppercase tracking-tight"
+                      className="text-xl sm:text-2xl font-black text-[#0C2340] uppercase tracking-tight"
                       style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                     >
                       {currentService.headline}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#2D5A54] font-semibold">
+                    <p className="text-xs sm:text-sm text-[#112842] font-semibold">
                       {currentService.tagline}
                     </p>
                     <div className="flex flex-col gap-2.5 mt-1">
                       {currentService.items?.map((item) => (
-                        <div key={item.title} className="p-3.5 rounded-lg bg-[#EDEBE7] border border-[#D5D1C8]/60">
-                          <h4 className="text-xs font-black text-[#23413C] uppercase tracking-wide mb-0.5">
+                        <div key={item.title} className="p-3.5 rounded-lg bg-[#F1F3F5] border border-[#E2E8F0]/60">
+                          <h4 className="text-xs font-black text-[#0C2340] uppercase tracking-wide mb-0.5">
                             {item.num} {item.title}
                           </h4>
-                          <p className="text-xs text-[#2B2B2B] leading-relaxed">
+                          <p className="text-xs text-[#1E293B] leading-relaxed">
                             {item.desc}
                           </p>
                         </div>
@@ -349,7 +395,7 @@ export default function WhatWeDo() {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#D5D1C8] order-1 lg:order-2">
+                  <div className="lg:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden bg-white shadow-sm border-2 border-[#E2E8F0] order-1 lg:order-2">
                     <img
                       src={currentService.image}
                       alt={currentService.title}
@@ -367,17 +413,17 @@ export default function WhatWeDo() {
       {/* ======================================================== */}
       {/* Section C: CTA                                           */}
       {/* ======================================================== */}
-      <section className="py-10 bg-[#EDEBE7] border-t border-[#D5D1C8]/60 text-center">
+      <section className="py-10 bg-[#F1F3F5] border-t border-[#E2E8F0]/60 text-center">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <h3
-            className="text-lg sm:text-xl font-black text-[#23413C] uppercase tracking-tight text-center sm:text-left"
+            className="text-lg sm:text-xl font-black text-[#0C2340] uppercase tracking-tight text-center sm:text-left"
             style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
           >
             Need a specific service?
           </h3>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#2D5A54] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-[#23413C] transition-all flex-shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#112842] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-[#0C2340] transition-all flex-shrink-0"
           >
             <span>Let's Talk</span>
             <ArrowUpRight className="w-4 h-4" />

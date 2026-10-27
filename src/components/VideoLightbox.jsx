@@ -61,13 +61,13 @@ export default function VideoLightbox({ isOpen, onClose, videoUrl, title = 'Glob
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.85 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl bg-[#112C28] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#2C5E55]/80 shadow-[0_25px_60px_rgba(0,0,0,0.8)]"
+            className="relative w-full max-w-4xl bg-[#112C28] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#1B365D]/80 shadow-[0_25px_60px_rgba(0,0,0,0.8)]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Top Bar */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-[#0A1E1B] border-b border-white/10">
               <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#D38F22] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white truncate max-w-[260px] sm:max-w-md">
                   {title}
                 </span>
@@ -113,7 +113,7 @@ export default function VideoLightbox({ isOpen, onClose, videoUrl, title = 'Glob
               <Link
                 to="/contact"
                 onClick={onClose}
-                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#10B981] text-[#0A1E1B] font-bold text-xs uppercase tracking-wider hover:bg-[#34D399] transition-all flex-shrink-0 shadow-sm"
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#D38F22] text-[#0A1E1B] font-bold text-xs uppercase tracking-wider hover:bg-[#34D399] transition-all flex-shrink-0 shadow-sm"
               >
                 <span>Let's Talk</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />

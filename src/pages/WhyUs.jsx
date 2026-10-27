@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Layers, Globe, BarChart3, CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight, Layers, Globe, BarChart3, CheckCircle2, Landmark, Users, HeartHandshake, GraduationCap, Building2, Sparkles, TrendingUp, Handshake } from 'lucide-react';
 import { engagementModels, clientProcessSteps, sectorsServed } from '../data/engagement';
 import ProcessSteps from '../components/ProcessSteps';
 
@@ -29,12 +29,12 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section A: Page Hero (Compact & Editorial)               */}
       {/* ======================================================== */}
-      <section className="relative w-full py-14 sm:py-18 min-h-[320px] flex items-center justify-center bg-[#0D2B28] text-white pt-24 px-6 sm:px-8">
+      <section className="relative w-full py-14 sm:py-18 min-h-[320px] flex items-center justify-center bg-[#0A192F] text-white pt-24 px-6 sm:px-8">
         <div className="max-w-4xl mx-auto text-center z-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-bold tracking-[0.25em] text-[#4ECDC4] uppercase block mb-2"
+            className="text-[11px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block mb-2"
           >
             Why Choose Us
           </motion.span>
@@ -61,24 +61,24 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section A2: STATS WITH ANIMATED SVG ICONS (High Contrast) */}
       {/* ======================================================== */}
-      <section className="py-8 sm:py-10 bg-[#E5E3DE] border-b border-[#D5D1C8]">
+      <section className="py-8 sm:py-10 bg-[#F8F9FA] border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Stat 1: 500+ Campaigns (Bar Chart Animated SVG) */}
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#112842] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Bar Chart SVG */}
-              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
-                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#112842]/10 group-hover:bg-[#112842] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#112842] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <motion.line
                     x1="18" y1="20" x2="18" y2="4"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="stroke-[#2D5A54] group-hover:stroke-[#4ECDC4]"
+                    className="stroke-[#112842] group-hover:stroke-[#D4AF37]"
                   />
                   <motion.line
                     x1="12" y1="20" x2="12" y2="10"
@@ -95,12 +95,12 @@ export default function WhyUs() {
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#0C2340] group-hover:text-[#112842] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 500+
               </div>
-              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
+              <div className="text-[11px] font-bold text-[#112842] uppercase tracking-wider mt-1">
                 Campaigns Delivered
               </div>
             </motion.div>
@@ -109,11 +109,11 @@ export default function WhyUs() {
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#112842] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Calendar SVG */}
-              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
-                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#112842]/10 group-hover:bg-[#112842] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#112842] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
                   <line x1="8" y1="2" x2="8" y2="6" />
@@ -123,17 +123,17 @@ export default function WhyUs() {
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="stroke-[#2D5A54] group-hover:stroke-[#4ECDC4]"
+                    className="stroke-[#112842] group-hover:stroke-[#D4AF37]"
                   />
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#0C2340] group-hover:text-[#112842] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 15+
               </div>
-              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
+              <div className="text-[11px] font-bold text-[#112842] uppercase tracking-wider mt-1">
                 Years Experience
               </div>
             </motion.div>
@@ -142,11 +142,11 @@ export default function WhyUs() {
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#112842] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Radio Tower Pulse SVG */}
-              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
-                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#112842]/10 group-hover:bg-[#112842] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#112842] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4.93 19.07a10 10 0 0 1 0-14.14" className="animate-pulse" />
                   <path d="M7.76 16.24a6 6 0 0 1 0-8.48" />
                   <circle cx="12" cy="12" r="2" fill="currentColor" />
@@ -155,12 +155,12 @@ export default function WhyUs() {
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#0C2340] group-hover:text-[#112842] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 180+
               </div>
-              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
+              <div className="text-[11px] font-bold text-[#112842] uppercase tracking-wider mt-1">
                 Media Network
               </div>
             </motion.div>
@@ -169,11 +169,11 @@ export default function WhyUs() {
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 350, damping: 22 }}
-              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#D5D1C8] hover:border-[#2D5A54] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
+              className="group p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#112842] shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center cursor-pointer"
             >
               {/* Animated Trophy SVG */}
-              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#2D5A54]/10 group-hover:bg-[#2D5A54] flex items-center justify-center transition-all duration-300">
-                <svg className="w-6 h-6 text-[#2D5A54] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-12 h-12 mb-3.5 rounded-xl bg-[#112842]/10 group-hover:bg-[#112842] flex items-center justify-center transition-all duration-300">
+                <svg className="w-6 h-6 text-[#112842] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
                   <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
                   <path d="M4 22h16" />
@@ -182,12 +182,12 @@ export default function WhyUs() {
                 </svg>
               </div>
               <div
-                className="text-2xl sm:text-3xl font-black text-[#23413C] group-hover:text-[#2D5A54] transition-colors"
+                className="text-2xl sm:text-3xl font-black text-[#0C2340] group-hover:text-[#112842] transition-colors"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 Goa #1 PR
               </div>
-              <div className="text-[11px] font-bold text-[#2D5A54] uppercase tracking-wider mt-1">
+              <div className="text-[11px] font-bold text-[#112842] uppercase tracking-wider mt-1">
                 Strategic Agency
               </div>
             </motion.div>
@@ -198,14 +198,14 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section B: 3 Advantage Cards (Smooth Hover Animation)    */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#E5E3DE]">
+      <section className="py-10 sm:py-14 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span className="text-[11px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase block mb-1">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#112842] uppercase block mb-1">
               Our Core Strengths
             </span>
             <h2
-              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#23413C]"
+              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#0C2340]"
               style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
             >
               THE GLOBAL AADHAR ADVANTAGE
@@ -223,18 +223,18 @@ export default function WhyUs() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
                   whileHover={{ y: -6, scale: 1.015 }}
-                  className="group relative rounded-2xl p-6 sm:p-7 bg-white hover:bg-[#3D6E65] border border-[#D5D1C8]/80 hover:border-[#3D6E65] shadow-sm hover:shadow-xl transition-all duration-300 ease-out flex flex-col justify-start cursor-pointer"
+                  className="group relative rounded-2xl p-6 sm:p-7 bg-white hover:bg-[#0F2A4A] border border-[#E2E8F0]/80 hover:border-[#0F2A4A] shadow-sm hover:shadow-xl transition-all duration-300 ease-out flex flex-col justify-start cursor-pointer"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#2D5A54] group-hover:bg-white text-white group-hover:text-[#2D5A54] flex items-center justify-center mb-5 transition-all duration-300 shadow-sm group-hover:shadow-md">
-                    <IconComp className="w-6 h-6 text-[#4ECDC4] group-hover:text-[#2D5A54] transition-colors duration-300" />
+                  <div className="w-12 h-12 rounded-xl bg-[#112842] group-hover:bg-white text-white group-hover:text-[#112842] flex items-center justify-center mb-5 transition-all duration-300 shadow-sm group-hover:shadow-md">
+                    <IconComp className="w-6 h-6 text-[#D4AF37] group-hover:text-[#112842] transition-colors duration-300" />
                   </div>
                   <h3
-                    className="text-base sm:text-lg font-black text-[#23413C] group-hover:text-white uppercase tracking-tight mb-2.5 transition-colors duration-300"
+                    className="text-base sm:text-lg font-black text-[#0C2340] group-hover:text-white uppercase tracking-tight mb-2.5 transition-colors duration-300"
                     style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
                   >
                     {adv.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#2B2B2B]/85 group-hover:text-white/95 leading-relaxed transition-colors duration-300">
+                  <p className="text-xs sm:text-sm text-[#1E293B]/85 group-hover:text-white/95 leading-relaxed transition-colors duration-300">
                     {adv.desc}
                   </p>
                 </motion.div>
@@ -247,10 +247,10 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section C: How We Engage (Dark Teal Split Table)          */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#23413C] text-white">
+      <section className="py-10 sm:py-14 bg-[#0C2340] text-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span className="text-[11px] font-bold tracking-[0.25em] text-[#4ECDC4] uppercase block mb-1">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block mb-1">
               Flexible Collaboration
             </span>
             <h2
@@ -275,10 +275,10 @@ export default function WhyUs() {
                     <motion.div
                       whileHover={{ y: -3 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                      className="p-4 sm:p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[#4ECDC4]/50 transition-all flex flex-col justify-center h-full shadow-sm hover:shadow-md"
+                      className="p-4 sm:p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[#D4AF37]/50 transition-all flex flex-col justify-center h-full shadow-sm hover:shadow-md"
                     >
                       <div className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#4ECDC4] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                         <div>
                           <h4
                             className="text-sm font-black text-white uppercase tracking-wide mb-1"
@@ -299,10 +299,10 @@ export default function WhyUs() {
                     <motion.div
                       whileHover={{ y: -3 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                      className="p-4 sm:p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[#4ECDC4]/50 transition-all flex flex-col justify-center h-full shadow-sm hover:shadow-md"
+                      className="p-4 sm:p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[#D4AF37]/50 transition-all flex flex-col justify-center h-full shadow-sm hover:shadow-md"
                     >
                       <div className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#4ECDC4] flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                         <div>
                           <h4
                             className="text-sm font-black text-white uppercase tracking-wide mb-1"
@@ -327,19 +327,19 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section D: Client Engagement Process (Beige)              */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#E5E3DE]">
+      <section className="py-10 sm:py-14 bg-[#F8F9FA]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span className="text-[11px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase block mb-1">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#112842] uppercase block mb-1">
               Our Methodology
             </span>
             <h2
-              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#23413C]"
+              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#0C2340]"
               style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
             >
               CLIENT ENGAGEMENT PROCESS
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-[#2B2B2B]">
+            <p className="mt-2 text-xs sm:text-sm text-[#1E293B]">
               A disciplined four-stage lifecycle from diagnostic discovery to measurable impact.
             </p>
           </div>
@@ -351,19 +351,19 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section E: Who We Serve (3 Sector Cards)                  */}
       {/* ======================================================== */}
-      <section className="py-10 sm:py-14 bg-[#EDEBE7] border-t border-[#D5D1C8]/70">
+      <section className="py-10 sm:py-14 bg-[#F1F3F5] border-t border-[#E2E8F0]/70">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span className="text-[11px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase block mb-1">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#112842] uppercase block mb-1">
               Sectors &amp; Industries
             </span>
             <h2
-              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#23413C]"
+              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#0C2340]"
               style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
             >
               WHO WE SERVE
             </h2>
-            <p className="mt-2 text-xs sm:text-sm text-[#2B2B2B]">
+            <p className="mt-2 text-xs sm:text-sm text-[#1E293B]">
               Trusted partner across corporate enterprises, grassroots organizations, and government departments.
             </p>
           </div>
@@ -376,7 +376,7 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className={`relative rounded-xl overflow-hidden shadow-sm flex flex-col justify-end p-6 text-white min-h-[260px] ${
-                  sector.isCenter ? 'ring-2 ring-[#4ECDC4] shadow-md md:-translate-y-1' : ''
+                  sector.isCenter ? 'ring-2 ring-[#D4AF37] shadow-md md:-translate-y-1' : ''
                 }`}
               >
                 {/* Image Background */}
@@ -387,11 +387,11 @@ export default function WhyUs() {
                   loading="lazy"
                 />
                 {/* Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D2B28]/90 via-[#0D2B28]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/90 via-[#0A192F]/40 to-transparent" />
 
                 {/* Content */}
                 <div className="relative z-10">
-                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#4ECDC4] uppercase block mb-1">
+                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase block mb-1">
                     {sector.subtitle}
                   </span>
                   <h3
@@ -402,7 +402,7 @@ export default function WhyUs() {
                   </h3>
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-[#4ECDC4] uppercase hover:underline mt-1"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-[#D4AF37] uppercase hover:underline mt-1"
                   >
                     <span>Partner With Us</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -417,17 +417,17 @@ export default function WhyUs() {
       {/* ======================================================== */}
       {/* Section F: CTA Strip                                     */}
       {/* ======================================================== */}
-      <section className="py-10 bg-[#E5E3DE] border-t border-[#D5D1C8]/60 text-center">
+      <section className="py-10 bg-[#F8F9FA] border-t border-[#E2E8F0]/60 text-center">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <h3
-            className="text-lg sm:text-xl font-black text-[#23413C] uppercase tracking-tight text-center sm:text-left"
+            className="text-lg sm:text-xl font-black text-[#0C2340] uppercase tracking-tight text-center sm:text-left"
             style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
           >
             Ready to scale your strategic outreach?
           </h3>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#2D5A54] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-[#23413C] transition-all flex-shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#112842] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:bg-[#0C2340] transition-all flex-shrink-0"
           >
             <span>Let's Talk</span>
             <ArrowUpRight className="w-4 h-4" />

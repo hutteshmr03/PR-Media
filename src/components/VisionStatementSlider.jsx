@@ -68,7 +68,7 @@ export default function VisionStatementSlider() {
   return (
     <section className="relative w-full py-16 sm:py-24 bg-[#081715] text-white overflow-hidden border-t border-white/10 select-none">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#4ECDC4]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#D4AF37]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -132,7 +132,7 @@ export default function VisionStatementSlider() {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-[#4ECDC4] text-white hover:text-[#0A1E1B] border border-white/20 hover:border-[#4ECDC4] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-[#D4AF37] text-white hover:text-[#0A1E1B] border border-white/20 hover:border-[#D4AF37] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95"
                   aria-label="Previous slide"
                   title="Previous"
                 >
@@ -142,7 +142,7 @@ export default function VisionStatementSlider() {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#4ECDC4] text-[#0A1E1B] hover:bg-[#10B981] border border-[#4ECDC4] hover:border-[#10B981] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#D4AF37] text-[#0A1E1B] hover:bg-[#D38F22] border border-[#D4AF37] hover:border-[#D38F22] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
                   aria-label="Next slide"
                   title="Next"
                 >
@@ -161,7 +161,7 @@ export default function VisionStatementSlider() {
                       setCurrentIndex(idx);
                     }}
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                      currentIndex === idx ? 'w-8 bg-[#4ECDC4]' : 'w-2 bg-white/30 hover:bg-white/60'
+                      currentIndex === idx ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-white/30 hover:bg-white/60'
                     }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />

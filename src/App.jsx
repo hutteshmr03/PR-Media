@@ -18,9 +18,9 @@ const Contact = lazy(() => import('./pages/Contact'));
 
 function PageFallback() {
   return (
-    <div className="w-full min-h-[75vh] flex flex-col items-center justify-center bg-[#E5E3DE] gap-4">
-      <div className="w-8 h-8 rounded-full border-2 border-[#2D5A54]/30 border-t-[#2D5A54] animate-spin" />
-      <span className="text-[10px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase">
+    <div className="w-full min-h-[75vh] flex flex-col items-center justify-center bg-[#F8F9FA] gap-4">
+      <div className="w-8 h-8 rounded-full border-2 border-[#112842]/30 border-t-[#112842] animate-spin" />
+      <span className="text-[10px] font-bold tracking-[0.25em] text-[#112842] uppercase">
         GLOBAL AADHAR
       </span>
     </div>
@@ -137,7 +137,7 @@ export default function App() {
       {/* Cinematic Intro Splash Screen */}
       {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
 
-      <div className="min-h-screen bg-[#E5E3DE] text-[#2B2B2B] selection:bg-[#2D5A54] selection:text-white antialiased relative flex flex-col justify-between font-sans">
+      <div className="min-h-screen bg-[#F8F9FA] text-[#1E293B] selection:bg-[#112842] selection:text-white antialiased relative flex flex-col justify-between font-sans">
         {/* Helper to reset scroll position on route change */}
         <ScrollToTop />
 

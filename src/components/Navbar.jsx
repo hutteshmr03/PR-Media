@@ -32,32 +32,24 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 sm:h-[64px] flex items-center ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 sm:h-[68px] lg:h-[72px] flex items-center ${
         isScrolled || !isHome
-          ? 'bg-[#E5E3DE]/95 backdrop-blur-md shadow-sm border-b border-[#D5D1C8]/70'
+          ? 'bg-[#F8F9FA]/95 backdrop-blur-md shadow-sm border-b border-[#E2E8F0]/70'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl w-full mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
-        {/* Brand Logo & Strategic PR Tag */}
+        {/* Brand Logo */}
         <Link
           to="/"
-          className="group flex flex-col text-left focus:outline-none"
+          className="group flex items-center text-left focus:outline-none py-1"
+          aria-label="Global Aadhar Home"
         >
-          <span
-            className={`text-sm sm:text-base font-extrabold tracking-widest uppercase transition-colors duration-200 ${
-              isScrolled || !isHome ? 'text-[#23413C]' : 'text-white'
-            }`}
-          >
-            GLOBAL AADHAR
-          </span>
-          <span
-            className={`text-[8px] sm:text-[9px] tracking-[0.2em] uppercase font-semibold transition-colors duration-200 ${
-              isScrolled || !isHome ? 'text-[#2D5A54]' : 'text-[#4ECDC4]'
-            }`}
-          >
-            STRATEGIC PR · GOA
-          </span>
+          <img
+            src={isScrolled || !isHome ? '/logo-horizontal.png' : '/logo-horizontal-white.png'}
+            alt="Global Aadhar - PR & Communications - Your Story. Our Global Reach."
+            className="h-10 sm:h-11 lg:h-12 w-auto max-w-[240px] sm:max-w-[320px] object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -69,9 +61,9 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `text-xs font-bold tracking-wider uppercase transition-colors duration-200 py-1 ${
                   isActive
-                    ? 'text-[#2D5A54] border-b-2 border-[#2D5A54]'
+                    ? 'text-[#112842] border-b-2 border-[#112842]'
                     : isScrolled || !isHome
-                    ? 'text-[#2B2B2B] hover:text-[#2D5A54]'
+                    ? 'text-[#1E293B] hover:text-[#112842]'
                     : 'text-white/85 hover:text-white'
                 }`
               }
@@ -87,8 +79,8 @@ export default function Navbar() {
             to="/contact"
             className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-sm ${
               isScrolled || !isHome
-                ? 'bg-[#2D5A54] text-white hover:bg-[#23413C]'
-                : 'bg-[#2D5A54] border border-[#4ECDC4]/50 text-white hover:bg-[#23413C] hover:border-[#4ECDC4]'
+                ? 'bg-[#112842] text-white hover:bg-[#0C2340]'
+                : 'bg-[#112842] border border-[#D4AF37]/50 text-white hover:bg-[#0C2340] hover:border-[#D4AF37]'
             }`}
           >
             Let's Talk
@@ -100,7 +92,7 @@ export default function Navbar() {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className={`lg:hidden p-2 rounded-lg transition-colors focus:outline-none ${
-            isScrolled || !isHome ? 'text-[#23413C]' : 'text-white'
+            isScrolled || !isHome ? 'text-[#0C2340]' : 'text-white'
           }`}
           aria-label="Toggle navigation menu"
         >
@@ -110,15 +102,15 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-16 left-0 right-0 bg-[#E5E3DE] border-b border-[#D5D1C8] px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+        <div className="lg:hidden fixed top-16 left-0 right-0 bg-[#F8F9FA] border-b border-[#E2E8F0] px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
           <nav className="flex flex-col gap-3">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-xs font-bold tracking-wider uppercase py-2 border-b border-[#D5D1C8]/40 ${
-                    isActive ? 'text-[#2D5A54] font-black' : 'text-[#2B2B2B]'
+                  `text-xs font-bold tracking-wider uppercase py-2 border-b border-[#E2E8F0]/40 ${
+                    isActive ? 'text-[#112842] font-black' : 'text-[#1E293B]'
                   }`
                 }
               >
@@ -127,7 +119,7 @@ export default function Navbar() {
             ))}
             <Link
               to="/contact"
-              className="mt-2 inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#2D5A54] text-white text-xs font-bold tracking-wider uppercase hover:bg-[#23413C]"
+              className="mt-2 inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#112842] text-white text-xs font-bold tracking-wider uppercase hover:bg-[#0C2340]"
             >
               Let's Talk
               <ArrowUpRight className="w-4 h-4" />

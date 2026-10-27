@@ -96,16 +96,16 @@ export default function StrategicShowcase() {
   }, [isHovered, modalVideo]);
 
   return (
-    <section className="py-12 sm:py-16 bg-[#E5E3DE] border-b border-[#D5D1C8]/60 overflow-visible select-none">
+    <section className="py-12 sm:py-16 bg-[#F8F9FA] border-b border-[#E2E8F0]/60 overflow-visible select-none">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header & Card Tabs */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-3 border-b border-[#D5D1C8] gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-3 border-b border-[#E2E8F0] gap-4">
           <div>
-            <span className="text-[11px] font-bold tracking-[0.25em] text-[#2D5A54] uppercase block mb-1">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#112842] uppercase block mb-1">
               Media in Action
             </span>
             <h2
-              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#23413C]"
+              className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-[#0C2340]"
               style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
             >
               SHOWCASES
@@ -123,7 +123,7 @@ export default function StrategicShowcase() {
                   className={`px-4 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                     isActive
                       ? 'bg-[#1E3F3A] text-white shadow-md'
-                      : 'text-[#2B2B2B]/70 hover:text-[#1E3F3A] hover:bg-white/60'
+                      : 'text-[#1E293B]/70 hover:text-[#1E3F3A] hover:bg-white/60'
                   }`}
                 >
                   {s.tabLabel}
@@ -157,21 +157,20 @@ export default function StrategicShowcase() {
                 onClick={() => {
                   if (!isTop) setActiveIndex(idx);
                 }}
-                className={`absolute inset-x-0 top-0 w-full rounded-2xl sm:rounded-3xl bg-[#112C28] text-white border-2 border-[#2C5E55] transition-[border-color] duration-300 ${
-                  isTop ? 'cursor-default border-[#4ECDC4]/70' : 'cursor-pointer hover:border-[#4ECDC4]/50'
+                className={`absolute inset-x-0 top-0 w-full rounded-2xl sm:rounded-3xl bg-[#112C28] text-white border-2 border-[#1B365D] transition-[border-color] duration-300 ${
+                  isTop ? 'cursor-default border-[#D4AF37]/70' : 'cursor-pointer hover:border-[#D4AF37]/50'
                 } p-6 sm:p-8 lg:p-10 overflow-hidden`}
               >
                 {/* Ambient Radial Glows */}
-                <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#4ECDC4]/10 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#2D5A54]/25 blur-3xl pointer-events-none" />
+                <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#112842]/25 blur-3xl pointer-events-none" />
 
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                   {/* Left Column: Messaging & Badges */}
                   <div className="lg:col-span-5 flex flex-col gap-3.5">
-                    {/* Green Dot Eyebrow */}
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981]" />
-                      <span className="text-[11px] font-bold text-[#10B981] uppercase tracking-[0.2em]">
+                    {/* Eyebrow */}
+                    <div className="flex items-center">
+                      <span className="text-[11px] font-bold text-[#D38F22] uppercase tracking-[0.2em]">
                         {item.badge}
                       </span>
                     </div>
@@ -191,7 +190,7 @@ export default function StrategicShowcase() {
 
                     {/* Badges */}
                     <div className="pt-2 flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-[#10B981]">
+                      <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-[#D38F22]">
                         {item.tag}
                       </span>
                       <span className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-white/75">
@@ -222,14 +221,14 @@ export default function StrategicShowcase() {
 
                       {/* Play Button & Details Bar on Bottom */}
                       <div className="absolute bottom-4 left-4 right-4 z-10 flex items-center gap-3.5">
-                        <div className="w-12 h-12 rounded-full bg-[#10B981] group-hover:bg-[#4ECDC4] text-[#0A1E1B] flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-[#D38F22] group-hover:bg-[#D4AF37] text-[#0A1E1B] flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 flex-shrink-0">
                           <Play className="w-5 h-5 fill-current ml-0.5" />
                         </div>
                         <div className="flex flex-col">
                           <span className="text-xs sm:text-sm font-bold text-white tracking-wide leading-snug">
                             {item.videoTitle}
                           </span>
-                          <span className="text-[10px] text-[#10B981] font-medium tracking-wider">
+                          <span className="text-[10px] text-[#D38F22] font-medium tracking-wider">
                             {item.videoSub}
                           </span>
                         </div>
@@ -252,7 +251,7 @@ export default function StrategicShowcase() {
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 5, ease: 'linear' }}
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-[#4ECDC4] origin-left z-20"
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-[#D4AF37] origin-left z-20"
                   />
                 )}
               </motion.div>
@@ -281,8 +280,7 @@ export default function StrategicShowcase() {
             >
               {/* Modal Top Bar */}
               <div className="flex items-center justify-between p-4 bg-[#0A1E1B] border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                <div className="flex items-center">
                   <span className="text-xs font-bold uppercase tracking-wider text-white">
                     {modalVideo.headline} • {modalVideo.badge}
                   </span>
@@ -314,7 +312,7 @@ export default function StrategicShowcase() {
                 <Link
                   to="/contact"
                   onClick={() => setModalVideo(null)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#10B981] text-[#0A1E1B] font-bold text-xs uppercase tracking-wider hover:bg-[#34D399] transition-all flex-shrink-0"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#D38F22] text-[#0A1E1B] font-bold text-xs uppercase tracking-wider hover:bg-[#34D399] transition-all flex-shrink-0"
                 >
                   <span>Let's Talk</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

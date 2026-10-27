@@ -53,7 +53,7 @@ export default function SplashScreen({ onComplete }) {
         initial={{ y: '0%' }}
         animate={{ y: isExiting ? '-100%' : '0%' }}
         transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute top-0 left-0 w-full h-[50%] bg-[#1a3830] z-0 border-b border-[#234b41]/40"
+        className="absolute top-0 left-0 w-full h-[50%] bg-[#0A192F] z-0 border-b border-[#132A48]/40"
       />
 
       {/* Bottom Half Curtain */}
@@ -61,7 +61,7 @@ export default function SplashScreen({ onComplete }) {
         initial={{ y: '0%' }}
         animate={{ y: isExiting ? '100%' : '0%' }}
         transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
-        className="absolute bottom-0 left-0 w-full h-[50%] bg-[#1a3830] z-0 border-t border-[#234b41]/40"
+        className="absolute bottom-0 left-0 w-full h-[50%] bg-[#0A192F] z-0 border-t border-[#132A48]/40"
       />
 
       {/* Center Cinematic Content */}
@@ -75,14 +75,28 @@ export default function SplashScreen({ onComplete }) {
         transition={{ duration: 0.35, ease: 'easeOut' }}
         className="relative z-10 w-full max-w-5xl px-6 flex flex-col items-center justify-center text-center pointer-events-none"
       >
-        {/* 1. Top Category / Subtitle Label */}
+        {/* 1. Official Brand Emblem */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+          className="mb-3 sm:mb-4"
+        >
+          <img
+            src="/logo-icon-white.png"
+            alt="Global Aadhar"
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain mx-auto drop-shadow-[0_4px_24px_rgba(217,119,6,0.3)]"
+          />
+        </motion.div>
+
+        {/* Top Category / Subtitle Label */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-          className="mb-3 sm:mb-5"
+          className="mb-2 sm:mb-4"
         >
-          <span className="text-[11px] sm:text-[13px] font-bold tracking-[0.25em] text-[#4ECDC4] uppercase">
+          <span className="text-[11px] sm:text-[13px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase">
             STRATEGIC PR &amp; COMMUNICATIONS
           </span>
         </motion.div>
@@ -133,7 +147,7 @@ export default function SplashScreen({ onComplete }) {
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.55, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="w-20 sm:w-24 h-[2px] bg-[#4ECDC4] my-5 sm:my-7 origin-left"
+          className="w-20 sm:w-24 h-[2px] bg-[#D4AF37] my-5 sm:my-7 origin-left"
         />
 
         {/* 4. Bottom Tagline: Two lines */}
@@ -146,7 +160,7 @@ export default function SplashScreen({ onComplete }) {
           <span className="text-white/95 text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase">
             BUILDING TRUST. CREATING IMPACT.
           </span>
-          <span className="text-[#4ECDC4] text-xs sm:text-sm font-bold tracking-[0.2em] uppercase">
+          <span className="text-[#D4AF37] text-xs sm:text-sm font-bold tracking-[0.2em] uppercase">
             GOA &amp; WESTERN INDIA
           </span>
         </motion.div>

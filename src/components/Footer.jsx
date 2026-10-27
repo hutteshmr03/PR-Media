@@ -20,27 +20,23 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#081F1D] text-white border-t border-white/10">
+    <footer className="w-full bg-[#061224] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-12">
         {/* ======================================================== */}
         {/* MAIN ROW: Brand Identity & Quick Navigation              */}
         {/* ======================================================== */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pb-8 border-b border-white/10">
           {/* Left Column: Brand Logo & Strategic PR Subtitles */}
-          <div className="flex flex-col gap-2">
-            <Link to="/" className="inline-flex flex-col text-left group">
-              <span
-                className="text-lg sm:text-xl font-black tracking-widest uppercase text-white"
-                style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
-              >
-                GLOBAL AADHAR
-              </span>
-              <span className="text-[9px] tracking-[0.22em] uppercase font-bold text-[#4ECDC4]">
-                STRATEGIC COMMUNICATIONS &amp; PR · GOA
-              </span>
+          <div className="flex flex-col gap-3">
+            <Link to="/" className="inline-flex items-center text-left group" aria-label="Global Aadhar Home">
+              <img
+                src="/logo-horizontal-white.png"
+                alt="Global Aadhar - PR & Communications"
+                className="h-10 sm:h-12 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
+              />
             </Link>
-            <p className="text-xs text-white/60 tracking-wider uppercase font-medium mt-1">
-              Building Trust. Creating Impact.
+            <p className="text-xs text-white/70 tracking-[0.2em] uppercase font-semibold">
+              Goa · India · Worldwide
             </p>
           </div>
 
@@ -48,7 +44,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 lg:items-end">
             <div className="mb-1">
               <span
-                className="text-xs sm:text-sm font-black uppercase tracking-wider text-white border-b-2 border-[#4ECDC4] pb-1 inline-block"
+                className="text-xs sm:text-sm font-black uppercase tracking-wider text-white border-b-2 border-[#D4AF37] pb-1 inline-block"
                 style={{ fontFamily: 'var(--font-headline, sans-serif)' }}
               >
                 QUICK NAVIGATION
@@ -61,7 +57,7 @@ export default function Footer() {
                 <Link
                   key={item.label}
                   to={item.path}
-                  className="hover:text-[#4ECDC4] transition-colors"
+                  className="hover:text-[#D4AF37] transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -82,7 +78,7 @@ export default function Footer() {
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#4ECDC4] hover:text-[#081F1D] text-white flex items-center justify-center transition-all duration-200 shadow-sm cursor-pointer"
+            className="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#D4AF37] hover:text-[#061224] text-white flex items-center justify-center transition-all duration-200 shadow-sm cursor-pointer"
           >
             <ChevronUp className="w-5 h-5" />
           </button>
